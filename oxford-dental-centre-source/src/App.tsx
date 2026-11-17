@@ -1,4 +1,4 @@
-﻿import { FormEvent, ReactNode, useEffect, useState } from "react";
+import { FormEvent, ReactNode, useEffect, useState } from "react";
 import { AdminLogin, AdminPortal, seedAppointments, type AdminAppointment } from "./AdminPanel";
 import aaidLogo from "./assets/associates/aaid.png";
 import invisalignLogo from "./assets/associates/invisalign-provider.png";
