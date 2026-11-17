@@ -1,4 +1,4 @@
-﻿import { FormEvent, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useEffect, useState } from "react";
+﻿import { FormEvent, ReactNode, useEffect, useState } from "react";
 import { AdminLogin, AdminPortal, seedAppointments, type AdminAppointment } from "./AdminPanel";
 import aaidLogo from "./assets/associates/aaid.png";
 import invisalignLogo from "./assets/associates/invisalign-provider.png";
@@ -33,67 +33,265 @@ const navItems: { label: string; page: Page }[] = [
   { label: "First visits", page: "first-visit" },
   { label: "About", page: "about" },
 ];
+export interface TreatmentDetail {
+  slug: string;
+  title: string;
+  subtitle: string;
+  text: string;
+  tag: string;
+  image: string;
+  page: Page;
+  eyebrow: string;
+  heading: string;
+  intro: string;
+  quickNote: string;
+  sections: {
+    title?: string;
+    paragraphs?: string[];
+    bullets?: string[];
+    checklist?: string[];
+  }[];
+}
 
-const treatments = [
+const treatments: TreatmentDetail[] = [
   {
-    title: "Dental emergencies",
-    text: "Prompt advice and urgent care when pain, swelling or dental injury cannot wait.",
-    image: roomImage,
-    tag: "Urgent care",
-    page: "emergency" as Page,
+    slug: "general-dentistry",
+    title: "General Dentistry Services",
+    subtitle:
+      "Tooth-Coloured Fillings – Smile with Confidence Ready to laugh freely and smile proudly?",
+    text: "Tooth-Coloured Fillings – Smile with Confidence Ready to laugh freely and smile proudly?",
+    tag: "Prevent",
+    image: chairImage,
+    page: "treatment",
+    eyebrow: "Everyday dental care",
+    heading:
+      "Tooth-Coloured Fillings – Smile with Confidence Ready to laugh freely and smile proudly?",
+    intro:
+      "At Oxford Dental Centre, our expertly crafted tooth-coloured fillings give you every reason to show off your smile. Unlike traditional grey amalgam fillings, our modern, dental care materials blend seamlessly with your natural teeth – so no one will ever know you've had dental work done. These virtually invisible fillings are the ideal solution if you want a flawless, confident smile.",
+    quickNote:
+      "Call our friendly team today on 01865 493372 or 07985716665 to book your appointment or learn more about how white fillings can transform your smile.",
+    sections: [
+      {
+        title: "Why choose Oxford Dental Centre for your general dentistry needs?",
+        checklist: [
+          "Natural-looking beautiful results",
+          "Performed by a highly skilled, experienced dentist",
+          "Feel confident to smile, laugh, and live boldly",
+        ],
+        paragraphs: [
+          "We use the latest techniques to ensure your comfort throughout the procedure.",
+          "In a relaxed atmosphere, we painlessly restore your tooth's appearance and function without compromising your bite.",
+          "Our goal is simple: to leave you with a radiant, healthy smile you will be proud to share.",
+        ],
+      },
+    ],
   },
-  {
+    {
+    slug: "dentures",
     title: "Dentures",
+    subtitle:
+      "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
     text: "Comfortable, natural-looking solutions designed to restore your smile and confidence.",
-    image: careImage,
     tag: "Restore",
-    page: "treatment" as Page,
+    image: chairImage,
+    page: "treatment",
+    eyebrow: "Everyday dental care",
+    heading: "Dentures in Oxford",
+    intro:
+      "Dentures are removable prosthetic devices used to replace missing teeth and surrounding gum tissue. They are custom-made using advanced, durable acrylic materials that closely resemble the appearance of natural teeth. At Oxford Dental Centre, our affordable dentures are designed to be strong, long-lasting, and resistant to staining – so your smile stays bright for years to come.",
+    quickNote:
+      "Call our friendly team today on 01865 493372 or 07985716665 to book your appointment or learn more about how white fillings can transform your smile.",
+    sections: [
+      {
+        title: "Benefits of Dentures from Oxford Dental Centre",
+        checklist: [
+          "Natural Appearance – Designed to match the shape, size, and shade of your original teeth.",
+          "Comfortable Fit – Modern techniques ensure a snug, secure fit with minimal irritation.",
+          "Facial Support – Dentures help fill out your cheeks and lips, reducing wrinkles and enhancing facial structure.",
+          "Improved Function – Regain the ability to eat, speak, and smile with confidence.",
+          "Budget-Friendly Options – We offer a variety of custom-made denture solutions to suit different budgets and lifestyle needs.",
+        ],
+      },
+      {
+        title: "Types of Dentures We Offer in Oxford",
+        paragraphs: ["We provide a full range of denture options tailored to your needs:"],
+        bullets: [
+          "Full Dentures – Replace all upper and/or lower teeth.",
+          "Partial Dentures – Ideal for replacing multiple missing teeth while preserving the remaining ones.",
+          "Immediate Dentures – Temporary dentures placed immediately after tooth extraction.",
+          "Implant-Supported Dentures – Provide maximum stability and comfort by anchoring to dental implants.",
+        ],
+      },
+    ],
   },
-  {
+
+   {
+    slug: "root-canal",
     title: "Root Canal",
+    subtitle:
+      "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
     text: "Careful treatment to relieve pain, remove infection and help preserve your natural tooth.",
-    image: chairImage,
     tag: "Preserve",
-    page: "treatment" as Page,
-  },
-  {
-    title: "Orthodontic treatment",
-    text: "Personalised options to improve alignment, bite and long-term dental health.",
-    image: clinicImage,
-    tag: "Straighten",
-    page: "treatment" as Page,
-  },
-  {
-    title: "Dental implants",
-    text: "A secure, long-lasting solution for replacing missing teeth.",
-    image: careImage,
-    tag: "Replace",
-    page: "treatment" as Page,
-  },
-  {
-    title: "Oral and Teeth Extractions",
-    text: "Considered, gentle removal care with clear guidance before and after your appointment.",
-    image: roomImage,
-    tag: "Oral surgery",
-    page: "treatment" as Page,
-  },
-  {
-    title: "Wisdom teeth removal",
-    text: "Assessment and treatment for painful, impacted or problematic wisdom teeth.",
     image: chairImage,
+    page: "treatment",
+    eyebrow: "Everyday dental care",
+    heading: "Root Canal Treatment: Pain-Free Endodontic Care at Oxford Dental Centre",
+    intro:
+      "Root canal therapy doesn't have to be a daunting experience. It is a highly effective, pain-relieving solution designed to save an infected tooth from extraction while restoring your dental comfort and overall health.",
+    quickNote:
+      "Call our friendly team today on 01865 493372 or 07985716665 to book your appointment or learn more about how white fillings can transform your smile.",
+    sections: [
+      {
+        title: "Signs You May Need a Root Canal:",
+        bullets: [
+          "Persistent toothache or throbbing pain",
+          "Sensitivity to hot or cold",
+          "Swollen gums or tenderness",
+          "Discomfort when biting or chewing",
+          "Darkened or discolored teeth",
+        ],
+        paragraphs: [
+          "If you're experiencing any of these symptoms, don't delay. Early treatment can prevent complications.",
+        ],
+      },
+      {
+        title: "What to Expect:",
+        bullets: [
+          "We'll numb the area to ensure your complete comfort.",
+          "The infected pulp is carefully removed.",
+          "The canals are thoroughly cleaned and sealed.",
+          "A crown is placed to protect and strengthen the tooth.",
+        ],
+        paragraphs: [
+          "Typically, treatment requires one to two visits, depending on the tooth's condition.",
+        ],
+      },
+      {
+        title: "After Treatment Care",
+        paragraphs: [
+          "Your tooth may be sensitive for a few days, but this sensitivity is temporary. We recommend placing a crown afterward to ensure long-term protection and to restore the tooth's strength and function.",
+        ],
+      },
+    ],
+  },
+
+  {
+    slug: "orthodontic-treatment",
+    title: "Orthodontic Treatment",
+    subtitle:
+      "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
+    text: "Personalised options to improve alignment, bite and long-term dental health.",
+    tag: "Straighten",
+    image: clinicImage,
+    page: "treatment",
+    eyebrow: "Everyday dental care",
+    heading: "Healthy smiles start with a trusted routine.",
+    intro:
+      "Regular examinations help us spot small changes before they become bigger concerns. Your visit is also time to talk—about sensitivity, confidence, habits or anything else on your mind.",
+    quickNote:
+      "Call our friendly team today on 01865 493372 or 07985716665 to book your appointment or learn more about how white fillings can transform your smile.",
+    sections: [
+      {
+        paragraphs: [
+          "We use digital imaging and careful clinical assessment to build a complete picture, then explain our findings in plain English.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "dental-implants",
+    title: "Dental Implants",
+    subtitle:
+      "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
+    text: "A secure, long-lasting solution for replacing missing teeth.",
+    tag: "Replace",
+    image: careImage,
+    page: "treatment",
+    eyebrow: "Everyday dental care",
+    heading: "Permanent Tooth Replacement That Feels Natural",
+    intro:
+      "Missing teeth? Dental implants offer a permanent dental solution that provides a long-term, stable option, looking, feeling, and functioning just like natural teeth.",
+    quickNote:
+      "Call our friendly team today on 01865 493372 or 07985716665 to book your appointment or learn more about how white fillings can transform your smile.",
+    sections: [
+      {
+        title: "Why choose dental implants?",
+        bullets: [
+          "Prevent bone loss",
+          "Eat, speak, and smile with confidence",
+          "No slipping or clicking like dentures",
+          "Maintain facial structures and oral health",
+        ],
+      },
+      {
+        title: "Dental implant options we offer:",
+        bullets: [
+          "Single or multiple implants",
+          "Implant-supported dentures",
+          "Full mouth rehabilitations (All-on-4/6/8)",
+        ],
+        paragraphs: [
+          "Dental implants are suitable for most healthy adults. Even if you've lost bone, we provide advanced treatments like bone grafts and sinus grafts to ensure effective tooth replacement.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "oral-and-teeth-extractions",
+    title: "Oral & Teeth Extractions",
+    subtitle:
+      "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
+    text: "Considered, gentle removal care with clear guidance before and after your appointment.",
     tag: "Oral surgery",
-    page: "treatment" as Page,
+    image: roomImage,
+    page: "treatment",
+    eyebrow: "Everyday dental care",
+    heading: "Gentle, Stress-Free Tooth Removal",
+    intro:
+      "From simple extractions to complex surgical cases, we ensure every procedure is as painless and comfortable as possible.",
+    quickNote:
+      "Call our friendly team today on 01865 493372 or 07985716665 to book your appointment or learn more about how white fillings can transform your smile.",
+    sections: [
+      {
+        title: "We Perform:",
+        checklist: [
+          "Routine and complex extractions",
+          "Impacted wisdom tooth removals",
+          "Frenectomies",
+          "Pre-orthodontic extractions",
+        ],
+      },
+      {
+        title: "Why you may need a Tooth Extracted?",
+        checklist: [
+          "Severe tooth decay or infection",
+          "Fractured or broken teeth beyond repair",
+          "Dental crowding before orthodontic treatment",
+          "Preparation for dentures",
+          "Impacted wisdom teeth",
+        ],
+      },
+      {
+        title: "Why Choose Us?",
+        checklist: [
+          "Advanced Techniques, Exceptional Care",
+          "Modern anaesthetics for a pain-free experience",
+          "Clear aftercare instructions",
+          "Oral Surgeons for complex procedures",
+        ],
+      },
+    ],
   },
 ];
 
 const fees = [
-  ["Adult consultation", "Â£95"],
-  ["Child consultation", "Â£65"],
-  ["Hygiene appointment", "from Â£89"],
-  ["White filling", "from Â£185"],
-  ["Ceramic crown", "from Â£795"],
-  ["Teeth whitening", "from Â£395"],
-  ["Invisalign", "from Â£3,250"],
+  ["Adult consultation", "£95"],
+  ["Child consultation", "£65"],
+  ["Hygiene appointment", "from £89"],
+  ["White filling", "from £185"],
+  ["Ceramic crown", "from £795"],
+  ["Teeth whitening", "from £395"],
+  ["Invisalign", "from £3,250"],
 ];
 
 function Icon({
@@ -169,6 +367,8 @@ function Icon({
 function App() {
   const [page, setPage] = useState<Page>("home");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedTreatment, setSelectedTreatment] =
+  useState<TreatmentDetail>(treatments[0]);
   const [portalMode, setPortalMode] = useState<"public" | "login" | "admin">("public");
   const [appointments, setAppointments] = useState<AdminAppointment[]>(seedAppointments);
 
@@ -208,20 +408,38 @@ function App() {
         page={page}
         setMenuOpen={setMenuOpen}
       />
-      <main>
-        {page === "home" && <HomePage navigate={navigate} openTreatment={openTreatment} />}
-        {page === "treatments" && <TreatmentsPage navigate={navigate} openTreatment={openTreatment} />}
-        {page === "treatment" && <TreatmentPage navigate={navigate} />}
-        {page === "emergency" && <EmergencyPage navigate={navigate} />}
-        {page === "fees" && <FeesPage navigate={navigate} />}
-        {page === "first-visit" && <FirstVisitPage navigate={navigate} />}
-        {page === "about" && <AboutPage navigate={navigate} />}
-        {page === "contact" && <ContactPage setAppointments={setAppointments} />}
-      </main>
-      <Footer navigate={navigate} />
-    </div>
-  );
+
+<main>
+  {page === "home" && <HomePage navigate={navigate} />}
+
+  {page === "treatments" && (
+    <TreatmentsPage
+      navigate={navigate}
+      treatments={treatments}
+      onSelectTreatment={setSelectedTreatment}
+    />
+  )}
+
+  {page === "treatment" && (
+    <TreatmentDetailsPage
+      navigate={navigate}
+      treatment={selectedTreatment}
+    />
+  )}
+
+  {page === "emergency" && <EmergencyPage navigate={navigate} />}
+  {page === "fees" && <FeesPage navigate={navigate} />}
+  {page === "first-visit" && <FirstVisitPage navigate={navigate} />}
+  {page === "about" && <AboutPage navigate={navigate} />}
+  {page === "contact" && (
+    <ContactPage setAppointments={setAppointments} />
+  )}
+</main>
+<Footer navigate={navigate} />
+</div>
+);
 }
+
 
 function Header({
   page,
@@ -259,7 +477,7 @@ function Header({
         <div className="mx-auto flex h-[82px] max-w-7xl items-center px-5 lg:px-8">
           <button className="group mr-auto shrink-0" onClick={() => navigate("home")}>
             <img
-              alt="Oxford Dental Centre â€” Personalised Care"
+              alt="Oxford Dental Centre — Personalised Care"
               className="h-[62px] w-auto transition group-hover:opacity-80"
               src={clinicLogo}
             />
@@ -312,7 +530,11 @@ function Header({
   );
 }
 
-function HomePage({ navigate, openTreatment }: { navigate: (page: Page) => void; openTreatment: (treatment: TreatmentDetail) => void }) {
+function HomePage({
+  navigate,
+}: {
+  navigate: (page: Page) => void;
+}) {
   const [review, setReview] = useState(0);
   const reviews = [
     {
@@ -345,7 +567,7 @@ function HomePage({ navigate, openTreatment }: { navigate: (page: Page) => void;
         </div>
         <div className="relative mx-auto flex min-h-[720px] max-w-7xl items-center px-5 py-24 lg:px-8">
           <div className="max-w-[650px]">
-            <p className="eyebrow">Oxfordâ€™s independent dental practice</p>
+            <p className="eyebrow">Oxford’s independent dental practice</p>
             <h1 className="mt-7 font-serif text-[clamp(3.4rem,7vw,6.8rem)] leading-[.88] font-medium tracking-[-.04em]">
               Care that feels
               <span className="block italic text-[#477c74]">wonderfully human.</span>
@@ -429,7 +651,7 @@ function HomePage({ navigate, openTreatment }: { navigate: (page: Page) => void;
               <button
                 className="group relative min-h-[480px] overflow-hidden bg-[#14383d] text-left"
                 key={treatment.title}
-                onClick={() => openTreatment(treatment)}
+                onClick={() => navigate(treatment.page)}
               >
                 <img
                   alt=""
@@ -439,7 +661,7 @@ function HomePage({ navigate, openTreatment }: { navigate: (page: Page) => void;
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b292e] via-transparent to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-8">
                   <span className="text-xs tracking-[.18em] text-[#c1ded8] uppercase">
-                    0{index + 1} Â· {treatment.tag}
+                    0{index + 1} · {treatment.tag}
                   </span>
                   <h3 className="mt-3 font-serif text-3xl">{treatment.title}</h3>
                   <p className="mt-3 max-w-sm leading-7 text-white/75">{treatment.text}</p>
@@ -486,9 +708,9 @@ function HomePage({ navigate, openTreatment }: { navigate: (page: Page) => void;
       <section className="bg-[#e1ede9] py-24 lg:py-32">
         <div className="mx-auto max-w-4xl px-5 text-center lg:px-8">
           <p className="eyebrow">Kind words</p>
-          <div className="mt-8 text-[#d59d55]">â˜…â˜…â˜…â˜…â˜…</div>
+          <div className="mt-8 text-[#d59d55]">★★★★★</div>
           <blockquote className="mt-8 font-serif text-3xl leading-snug md:text-5xl">
-            â€œ{reviews[review].quote}â€
+            “{reviews[review].quote}”
           </blockquote>
           <p className="mt-7 text-sm font-semibold tracking-[.14em] uppercase">
             {reviews[review].name}
@@ -539,56 +761,89 @@ function PageHero({
   );
 }
 
-function TreatmentsPage({ navigate, openTreatment }: { navigate: (page: Page) => void; openTreatment: (treatment: TreatmentDetail) => void }) {
+
+function TreatmentsPage({
+  navigate,
+  treatments,
+  onSelectTreatment,
+}: {
+  navigate: (page: Page) => void;
+  treatments: TreatmentDetail[];
+  onSelectTreatment: (treatment: TreatmentDetail) => void;
+}) {
   return (
     <>
       <PageHero
-        eyebrow="Treatment page"
-        image={careImage}
-        text="From everyday prevention to advanced restorative care, our team brings clarity, comfort and precision to every treatment."
-        title="Thoughtful care for every smile."
+        eyebrow="Our treatments"
+        image={treatments[0].image}
+        text="Explore our range of dental treatments, designed to help you maintain a healthy, confident smile."
+        title="Our Dental Treatments"
       />
+
       <section className="section-pad">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="mb-14 grid gap-8 lg:grid-cols-2">
-            <h2 className="section-title">Treatments, tailored to you.</h2>
-            <p className="body-copy">
-              No two people are the same, so no two care plans should be either. We take time to
-              understand what matters to you and explain every option without pressure.
+
+          <div className="mb-12 max-w-3xl">
+            <p className="eyebrow">Your dental care</p>
+            <h2 className="section-title mt-5">
+              Explore our treatments
+            </h2>
+            <p className="body-copy mt-6">
+              From routine dental care to more advanced procedures,
+              discover the treatments available at Oxford Dental Centre.
             </p>
           </div>
-          <div className="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-            {treatments.map((treatment, index) => (
-              <article className="group" key={treatment.title}>
-                <button
-                  className="block w-full overflow-hidden text-left"
-                  onClick={() => openTreatment(treatment)}
-                >
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {treatments.map((treatment) => (
+              <article
+                key={treatment.slug}
+                className="group overflow-hidden bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="h-56 overflow-hidden">
                   <img
-                    alt=""
-                    className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105"
                     src={treatment.image}
+                    alt={treatment.title}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
-                </button>
-                <p className="mt-6 text-xs tracking-[.16em] text-[#58736f] uppercase">
-                  0{index + 1} Â· {treatment.tag}
-                </p>
-                <h3 className="mt-2 font-serif text-3xl">{treatment.title}</h3>
-                <p className="mt-3 leading-7 text-[#52666a]">{treatment.text}</p>
-                <button className="text-link mt-5" onClick={() => openTreatment(treatment)}>
-                  Learn more <Icon name="arrow" size={17} />
-                </button>
+                </div>
+
+                <div className="p-7">
+                  <p className="eyebrow">{treatment.eyebrow}</p>
+
+                  <h3 className="mt-4 text-xl font-medium text-[#172c32]">
+                    {treatment.title}
+                  </h3>
+
+                  <p className="mt-4 leading-7 text-[#41585c]">
+                    {treatment.subtitle}
+                  </p>
+<button
+  className="button-primary mt-7 w-full"
+  onClick={() => {
+    onSelectTreatment(treatment);
+    navigate("treatment");
+  }}
+>
+  View treatment details
+  <Icon name="arrow" size={18} />
+</button>
+                </div>
               </article>
             ))}
           </div>
+
         </div>
       </section>
+
       <CTA navigate={navigate} />
     </>
   );
 }
 
-function TreatmentPage({
+
+
+function TreatmentDetailsPage({
   navigate,
   treatment,
 }: {
@@ -598,28 +853,46 @@ function TreatmentPage({
   return (
     <>
       <PageHero
-        eyebrow="Treatment details"
+        eyebrow={treatment.eyebrow || "Treatment details"}
         image={treatment.image}
         text={treatment.subtitle}
         title={treatment.title}
       />
+
       <section className="section-pad">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1.2fr_.8fr] lg:px-8">
+
           <div>
             <p className="eyebrow">{treatment.eyebrow}</p>
-            {treatment.heading && <h2 className="section-title mt-5">{treatment.heading}</h2>}
-            {treatment.intro && <p className="body-copy mt-7">{treatment.intro}</p>}
+
+            {treatment.heading && (
+              <h2 className="section-title mt-5">
+                {treatment.heading}
+              </h2>
+            )}
+
+            {treatment.intro && (
+              <p className="body-copy mt-7">
+                {treatment.intro}
+              </p>
+            )}
 
             {treatment.sections.map((section, idx) => (
               <div className="mt-8 space-y-5" key={idx}>
+
                 {section.title && (
-                  <h3 className="text-lg font-medium text-[#172c32]">{section.title}</h3>
+                  <h3 className="text-lg font-medium text-[#172c32]">
+                    {section.title}
+                  </h3>
                 )}
 
                 {section.checklist && (
                   <ul className="space-y-3 py-1">
-                    {section.checklist.map((item) => (
-                      <li className="flex items-center gap-3 text-[#41585c]" key={item}>
+                    {section.checklist.map((item: string) => (
+                      <li
+                        className="flex items-center gap-3 text-[#41585c]"
+                        key={item}
+                      >
                         <span className="grid h-5 w-5 shrink-0 place-items-center rounded bg-[#36b34a] text-white">
                           <Icon name="check" size={13} />
                         </span>
@@ -630,31 +903,42 @@ function TreatmentPage({
                 )}
 
                 {section.bullets && (
-                  <ul className="list-disc space-y-2 pl-5 text-[#41585c]">
-                    {section.bullets.map((bullet, bulletIdx) => (
-                      <li key={bulletIdx}>{bullet}</li>
+                  <ul className="list-none space-y-2 text-[#41585c]">
+                    {section.bullets.map((bullet: string, bulletIdx: number) => (
+                      <li key={bulletIdx}>- {bullet}</li>
                     ))}
                   </ul>
                 )}
 
-                {section.paragraphs?.map((para: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined, pIdx: Key | null | undefined) => (
+                {section.paragraphs?.map((para: string, pIdx: number) => (
                   <p className="body-copy" key={pIdx}>
                     {para}
                   </p>
                 ))}
+
               </div>
             ))}
           </div>
 
           <aside className="self-start bg-[#e1ede9] p-8 lg:p-10">
             <p className="eyebrow">Treatment quick details</p>
-            <p className="mt-6 leading-7 text-[#41585c]">{treatment.quickNote}</p>
-            <button className="button-primary mt-12 w-full" onClick={() => navigate("contact")}>
-              Ask about treatment <Icon name="arrow" size={18} />
+
+            <p className="mt-6 leading-7 text-[#41585c]">
+              {treatment.quickNote}
+            </p>
+
+            <button
+              className="button-primary mt-12 w-full"
+              onClick={() => navigate("contact")}
+            >
+              Ask about treatment
+              <Icon name="arrow" size={18} />
             </button>
           </aside>
+
         </div>
       </section>
+
       <CTA navigate={navigate} />
     </>
   );
@@ -757,6 +1041,10 @@ function EmergencyPage({ navigate }: { navigate: (page: Page) => void }) {
 }
 
 function FeesPage({ navigate }: { navigate: (page: Page) => void }) {
+  function onSelectTreatment(treatment: any) {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <>
       <PageHero
@@ -776,7 +1064,7 @@ function FeesPage({ navigate }: { navigate: (page: Page) => void }) {
               explanations of your care, helping you fully understand the value of your treatment.
               As costs depend on the complexity of your specific dental needs, we provide a thorough
               treatment plan and fee estimate immediately after your consultation. Consultation fees
-              are Â£95 for adults and Â£65 for children.
+              are £95 for adults and £65 for children.
             </p>
           </div>
           <div className="grid gap-14 lg:grid-cols-[1.2fr_.8fr]">
@@ -807,9 +1095,16 @@ function FeesPage({ navigate }: { navigate: (page: Page) => void }) {
                   Flexible finance options are available on selected treatments, subject to status.
                   Our reception team can explain the options and help you apply.
                 </p>
-                <button className="button-primary mt-8" onClick={() => navigate("contact")}>
-                  Ask reception <Icon name="arrow" size={18} />
-                </button>
+               <button
+  className="button-primary mt-7 w-full"
+  onClick={() => {
+    onSelectTreatment(treatments);
+    navigate("treatment");
+  }}
+>
+  View treatment details
+  <Icon name="arrow" size={18} />
+</button>
               </div>
             </div>
           </div>
@@ -898,7 +1193,7 @@ function AboutPage({ navigate }: { navigate: (page: Page) => void }) {
             </div>
             <div>
               <p className="body-copy">
-                Oxford Dental Centre was created to offer a more personal kind of dentistryâ€”one
+                Oxford Dental Centre was created to offer a more personal kind of dentistry—one
                 where clinicians have time to listen, teams know their patients and every decision
                 is made with long-term wellbeing in mind.
               </p>
@@ -928,7 +1223,7 @@ function AboutPage({ navigate }: { navigate: (page: Page) => void }) {
               <div>
                 <h4 className="font-serif text-4xl text-[#172c32]">Dr. Leonard Bowora</h4>
                 <p className="mt-5 max-w-3xl text-sm leading-7 text-[#52676a] italic">
-                  MSc (Oral Surgery), BChD, DCR(T), PDD (US), DUI (Implantology) â€“ Lille, France,
+                  MSc (Oral Surgery), BChD, DCR(T), PDD (US), DUI (Implantology) – Lille, France,
                   Assoc. Fellow (AAID, USA)
                 </p>
                 <p className="mt-2 text-sm font-semibold text-[#29464b]">
@@ -940,7 +1235,7 @@ function AboutPage({ navigate }: { navigate: (page: Page) => void }) {
                   dental surgeon known for his warm approach, meticulous care, and advanced
                   expertise in Oral Surgery, Dental Implants, Cosmetic Dentistry, Endodontics, and
                   Conscious Sedation. He believes that every smile is unique and is dedicated to
-                  providing personalised care tailored to each patientâ€™s needs and comfort.
+                  providing personalised care tailored to each patient’s needs and comfort.
                 </p>
                 <div className="mt-10 border-t border-[#14383d]/10 pt-9">
                   <h5 className="font-serif text-3xl text-[#172c32]">Skills and Experience</h5>
@@ -962,7 +1257,7 @@ function AboutPage({ navigate }: { navigate: (page: Page) => void }) {
                     <p>
                       Continuing to expand his knowledge, he completed a Postgraduate Residency in
                       Dental Implantology at the Medical and Dental University of Lille 2 in France
-                      in 2010 and has recently been awarded a Masterâ€™s degree in Oral Surgery (MSc).
+                      in 2010 and has recently been awarded a Master’s degree in Oral Surgery (MSc).
                     </p>
                   </div>
                 </div>
@@ -978,7 +1273,7 @@ function AboutPage({ navigate }: { navigate: (page: Page) => void }) {
                 </p>
                 <p>
                   His experience extends to managing complex Oral and Maxillofacial cases, including
-                  impacted teeth and advanced extractionsâ€”often performed under conscious sedation.
+                  impacted teeth and advanced extractions—often performed under conscious sedation.
                 </p>
                 <p>
                   Outside the clinic, Dr Bowora enjoys spending time outdoors. He is passionate
@@ -1027,7 +1322,7 @@ function ContactPage({
         eyebrow="Contact and appointments"
         image={roomImage}
         text="Whether you are ready to book or simply have a question, our friendly reception team is here to help."
-        title="Letâ€™s start a conversation."
+        title="Let’s start a conversation."
       />
       <section className="section-pad">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1.15fr_.85fr] lg:px-8">
@@ -1041,7 +1336,7 @@ function ContactPage({
                 </span>
                 <h3 className="mt-6 font-serif text-3xl">Thank you for getting in touch.</h3>
                 <p className="mt-4 leading-7 text-[#52676a]">
-                  Your request has been added to the admin teamâ€™s pending appointments. The
+                  Your request has been added to the admin team’s pending appointments. The
                   reception team would contact you shortly to confirm the details.
                 </p>
                 <button className="text-link mt-6" onClick={() => setSent(false)}>
@@ -1114,7 +1409,7 @@ function ContactPage({
                 <ContactLine
                   icon="clock"
                   label="Working hours"
-                  value="Mondayâ€“Friday, 09:00â€“17:00"
+                  value="Monday–Friday, 09:00–17:00"
                 />
                 <div className="border-b border-white/15 pb-7">
                   <p className="text-xs tracking-[.14em] text-white/50 uppercase">Email</p>
@@ -1178,7 +1473,7 @@ function CTA({ navigate }: { navigate: (page: Page) => void }) {
         <div>
           <p className="eyebrow">Ready when you are</p>
           <h2 className="mt-4 max-w-2xl font-serif text-4xl md:text-5xl">
-            Letâ€™s take care of your smile.
+            Let’s take care of your smile.
           </h2>
         </div>
         <button className="button-primary" onClick={() => navigate("contact")}>
@@ -1231,23 +1526,23 @@ function Footer({ navigate }: { navigate: (page: Page) => void }) {
             <div className="mt-5 space-y-3 text-sm text-white/65">
               <p className="flex justify-between">
                 <span>Mon</span>
-                <span>09:00â€“17:00</span>
+                <span>09:00–17:00</span>
               </p>
               <p className="flex justify-between">
                 <span>Tue</span>
-                <span>09:00â€“17:00</span>
+                <span>09:00–17:00</span>
               </p>
               <p className="flex justify-between">
                 <span>Wed</span>
-                <span>09:00â€“17:00</span>
+                <span>09:00–17:00</span>
               </p>
               <p className="flex justify-between">
                 <span>Thu</span>
-                <span>09:00â€“17:00</span>
+                <span>09:00–17:00</span>
               </p>
               <p className="flex justify-between">
                 <span>Fri</span>
-                <span>09:00â€“17:00</span>
+                <span>09:00–17:00</span>
               </p>
               <p className="flex justify-between">
                 <span>Sat</span>
@@ -1283,7 +1578,7 @@ function Footer({ navigate }: { navigate: (page: Page) => void }) {
           </div>
         </div>
         <div className="border-t border-white/10 px-5 py-6 text-center text-[11px] tracking-[.1em] text-white/40 uppercase">
-          Â© 2025 Oxford Dental Centre Â· Website concept
+          © 2025 Oxford Dental Centre · Website concept
         </div>
       </div>
     </footer>
@@ -1291,4 +1586,3 @@ function Footer({ navigate }: { navigate: (page: Page) => void }) {
 }
 
 export default App;
-
