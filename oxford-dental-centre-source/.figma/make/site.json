@@ -1,0 +1,14 @@
+{
+  "title": "Oxford Dental Centre",
+  "description": "Oxford Dental Centre - Professional dental care and treatments.",
+  "language": "en",
+  "robots": {
+    "index": true
+  },
+  "icons": {
+    "icon": "/favicon.png"
+  },
+  "accessibility": {
+    "addBypassLinks": true
+  }
+}
