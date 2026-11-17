@@ -9,8 +9,13 @@ import dentistPhoto from "./assets/onwner.png";
 type Page =
   | "home"
   | "treatments"
-  | "treatment"
   | "emergency"
+  | "root-canal"
+  | "dentures"
+  | "orthodontic"
+  | "dental-implants"
+  | "extractions"
+  | "wisdom-teeth"
   | "fees"
   | "first-visit"
   | "about"
@@ -34,6 +39,15 @@ const navItems: { label: string; page: Page }[] = [
   { label: "About", page: "about" },
 ];
 
+const treatmentPages: Page[] = [
+  "root-canal",
+  "dentures",
+  "orthodontic",
+  "dental-implants",
+  "extractions",
+  "wisdom-teeth",
+];
+
 const treatments = [
   {
     title: "Dental emergencies",
@@ -47,42 +61,42 @@ const treatments = [
     text: "Comfortable, natural-looking solutions designed to restore your smile and confidence.",
     image: careImage,
     tag: "Restore",
-    page: "treatment" as Page,
+    page: "dentures" as Page,
   },
   {
     title: "Root Canal",
     text: "Careful treatment to relieve pain, remove infection and help preserve your natural tooth.",
     image: chairImage,
     tag: "Preserve",
-    page: "treatment" as Page,
+    page: "root-canal" as Page,
   },
   {
     title: "Orthodontic treatment",
     text: "Personalised options to improve alignment, bite and long-term dental health.",
     image: clinicImage,
     tag: "Straighten",
-    page: "treatment" as Page,
+    page: "orthodontic" as Page,
   },
   {
     title: "Dental implants",
     text: "A secure, long-lasting solution for replacing missing teeth.",
     image: careImage,
     tag: "Replace",
-    page: "treatment" as Page,
+    page: "dental-implants" as Page,
   },
   {
     title: "Oral and Teeth Extractions",
     text: "Considered, gentle removal care with clear guidance before and after your appointment.",
     image: roomImage,
     tag: "Oral surgery",
-    page: "treatment" as Page,
+    page: "extractions" as Page,
   },
   {
     title: "Wisdom teeth removal",
     text: "Assessment and treatment for painful, impacted or problematic wisdom teeth.",
     image: chairImage,
     tag: "Oral surgery",
-    page: "treatment" as Page,
+    page: "wisdom-teeth" as Page,
   },
 ];
 
@@ -211,7 +225,12 @@ function App() {
       <main>
         {page === "home" && <HomePage navigate={navigate} />}
         {page === "treatments" && <TreatmentsPage navigate={navigate} />}
-        {page === "treatment" && <TreatmentPage navigate={navigate} />}
+        {page === "root-canal" && <RootCanalPage navigate={navigate} />}
+        {page === "dentures" && <DenturesPage navigate={navigate} />}
+        {page === "orthodontic" && <OrthodonticPage navigate={navigate} />}
+        {page === "dental-implants" && <DentalImplantsPage navigate={navigate} />}
+        {page === "extractions" && <ExtractionsPage navigate={navigate} />}
+        {page === "wisdom-teeth" && <WisdomTeethRemovalPage navigate={navigate} />}
         {page === "emergency" && <EmergencyPage navigate={navigate} />}
         {page === "fees" && <FeesPage navigate={navigate} />}
         {page === "first-visit" && <FirstVisitPage navigate={navigate} />}
@@ -267,7 +286,12 @@ function Header({
           <nav className="hidden items-center gap-6 xl:flex" aria-label="Main navigation">
             {navItems.map((item) => (
               <button
-                className={`nav-link ${page === item.page || (page === "treatment" && item.page === "treatments") ? "active" : ""}`}
+                className={`nav-link ${
+                  page === item.page ||
+                  (treatmentPages.includes(page) && item.page === "treatments")
+                  ? "active"
+                  : ""
+                }`}
                 key={item.page}
                 onClick={() => navigate(item.page)}
               >
@@ -588,28 +612,447 @@ function TreatmentsPage({ navigate }: { navigate: (page: Page) => void }) {
   );
 }
 
-function TreatmentPage({ navigate }: { navigate: (page: Page) => void }) {
+function RootCanalPage({ navigate }: { navigate: (page: Page) => void }) {
   return (
     <>
       <PageHero
         eyebrow="Treatment details"
         image={roomImage}
-        text="Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing."
-        title="Personalised dental care."
+        text="Root canal therapy is essential for relieving pain and preserving infected or damaged teeth, preventing the need for extraction."
+        title="Root Canal Treatment."
       />
       <section className="section-pad">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1.2fr_.8fr] lg:px-8">
           <div>
             <p className="eyebrow">Everyday dental care</p>
-            <h2 className="section-title mt-5">Healthy smiles start with a trusted routine.</h2>
+            <h2 className="section-title mt-5">Save your natural tooth, relieve pain, and smile confidently again.</h2>
             <p className="body-copy mt-7">
-              Regular examinations help us spot small changes before they become bigger concerns.
-              Your visit is also time to talk—about sensitivity, confidence, habits or anything else
-              on your mind.
+              Root canal therapy doesn’t have to be a daunting experience. It is a highly effective, pain-relieving solution designed to save an infected tooth from extraction while restoring your dental comfort and overall health.
+              Signs You May Need a Root Canal:
+              <ul>
+                <li>Persistent toothache or throbbing pain</li>
+                <li>Sensitivity to hot or cold</li>
+                <li>Swollen gums or tenderness</li>
+                <li>Discomfort when biting or chewing</li>
+                <li>Darkened or discolored teeth</li>
+              </ul>
             </p>
             <p className="body-copy mt-5">
-              We use digital imaging and careful clinical assessment to build a complete picture,
-              then explain our findings in plain English.
+              What to Expect:
+              <ul>
+                <li>We’ll numb the area to ensure your complete comfort.</li>
+                <li>The infected pulp is carefully removed.</li>
+                <li>The canals are thoroughly cleaned and sealed.</li>
+                <li>A crown is placed to protect and strengthen the tooth.</li>
+              </ul>
+
+              Typically, treatment requires one to two visits, depending on the tooth’s condition.
+              
+              After Treatment Care
+              Your tooth may be sensitive for a few days, but this sensitivity is temporary. We recommend placing a crown afterward to ensure long-term protection and to restore the tooth’s strength and function.
+
+              Does it hurt?
+              No. Thanks to modern anesthetics and techniques, most patients report that the procedure feels similar to getting a filling.
+            </p>
+          </div>
+          <aside className="self-start bg-[#e1ede9] p-8 lg:p-10">
+            <p className="eyebrow">Treatment quick details</p>
+            <div className="mt-7 space-y-5">
+              {[
+                ["Appointment time", "30–45 minutes"],
+                ["Comfort", "Gentle, unhurried care"],
+                ["Recommended", "Every 6–12 months"],
+                ["Fee", "From £65"],
+              ].map(([label, value]) => (
+                <div className="border-b border-[#14383d]/15 pb-5" key={label}>
+                  <p className="text-xs tracking-[.12em] text-[#607579] uppercase">{label}</p>
+                  <p className="mt-1 font-semibold">{value}</p>
+                </div>
+              ))}
+            </div>
+            <button className="button-primary mt-8 w-full" onClick={() => navigate("contact")}>
+              Ask about treatment <Icon name="arrow" size={18} />
+            </button>
+          </aside>
+        </div>
+      </section>
+      <section className="bg-[#14383d] py-24 text-white">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <p className="eyebrow text-[#9bc8bf]">Treatment fees</p>
+          <h2 className="mt-5 font-serif text-5xl">Clear fees. No surprises.</h2>
+          <div className="mt-10 grid gap-px bg-white/15 md:grid-cols-2">
+            {[
+              ["Routine examination", "£65"],
+              ["New patient examination", "£95"],
+              ["Small X-ray", "£18"],
+              ["White filling", "from £185"],
+            ].map(([name, price]) => (
+              <div className="flex justify-between bg-[#14383d] p-6" key={name}>
+                <span>{name}</span>
+                <strong>{price}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <CTA navigate={navigate} />
+    </>
+  );
+}
+
+function DenturesPage({ navigate }: { navigate: (page: Page) => void }) {
+  return (
+    <>
+      <PageHero
+        eyebrow="Treatment details"
+        image={roomImage}
+        text="Oxford Dental Centre offers custom-made dentures that restore your smile and boost your confidence."
+        title="Dentures"
+      />
+      <section className="section-pad">
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1.2fr_.8fr] lg:px-8">
+          <div>
+            <p className="eyebrow">Everyday dental care</p>
+            <h2 className="section-title mt-5">Natural-Looking, Comfortable Dentures.</h2>
+            <p className="body-copy mt-7">
+              Dentures are removable prosthetic devices used to replace missing teeth and surrounding gum tissue. They are custom-made using advanced, durable acrylic materials that closely resemble the appearance of natural teeth. At Oxford Dental Centre, our affordable dentures are designed to be strong, long-lasting, and resistant to staining – so your smile stays bright for years to come.
+              Benefits of Dentures from Oxford Dental Centre
+              <ul>
+                <li>Natural Appearance – Designed to match the shape, size, and shade of your original teeth.</li>
+                <li>Comfortable Fit – Modern techniques ensure a snug, secure fit with minimal irritation.</li>
+                <li>Facial Support – Dentures help fill out your cheeks and lips, reducing wrinkles and enhancing facial structure.</li>
+                <li>Improved Function – Regain the ability to eat, speak, and smile with confidence.</li>
+                <li>Budget-Friendly Options – We offer a variety of custom-made denture solutions to suit different budgets and lifestyle needs.</li>
+              </ul>
+            </p>
+            <p className="body-copy mt-5">
+              We provide a full range of denture options tailored to your needs:
+              <ul>
+                <li>Full Dentures – Replace all upper and/or lower teeth.</li>
+                <li>Partial Dentures – Ideal for replacing multiple missing teeth while preserving the remaining ones.</li>
+                <li>Immediate Dentures – Temporary dentures placed immediately after tooth extraction.</li>
+                <li>Implant-Supported Dentures – Provide maximum stability and comfort by anchoring to dental implants.</li>
+              </ul>
+            </p>
+          </div>
+          <aside className="self-start bg-[#e1ede9] p-8 lg:p-10">
+            <p className="eyebrow">Treatment quick details</p>
+            <div className="mt-7 space-y-5">
+              {[
+                ["Appointment time", "30–45 minutes"],
+                ["Comfort", "Gentle, unhurried care"],
+                ["Recommended", "Every 6–12 months"],
+                ["Fee", "From £65"],
+              ].map(([label, value]) => (
+                <div className="border-b border-[#14383d]/15 pb-5" key={label}>
+                  <p className="text-xs tracking-[.12em] text-[#607579] uppercase">{label}</p>
+                  <p className="mt-1 font-semibold">{value}</p>
+                </div>
+              ))}
+            </div>
+            <button className="button-primary mt-8 w-full" onClick={() => navigate("contact")}>
+              Ask about treatment <Icon name="arrow" size={18} />
+            </button>
+          </aside>
+        </div>
+      </section>
+      <section className="bg-[#14383d] py-24 text-white">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <p className="eyebrow text-[#9bc8bf]">Treatment fees</p>
+          <h2 className="mt-5 font-serif text-5xl">Clear fees. No surprises.</h2>
+          <div className="mt-10 grid gap-px bg-white/15 md:grid-cols-2">
+            {[
+              ["Routine examination", "£65"],
+              ["New patient examination", "£95"],
+              ["Small X-ray", "£18"],
+              ["White filling", "from £185"],
+            ].map(([name, price]) => (
+              <div className="flex justify-between bg-[#14383d] p-6" key={name}>
+                <span>{name}</span>
+                <strong>{price}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <CTA navigate={navigate} />
+    </>
+  );
+}
+
+function OrthodonticPage({ navigate }: { navigate: (page: Page) => void }) {
+  return (
+    <>
+      <PageHero
+        eyebrow="Treatment details"
+        image={roomImage}
+        text="Achieve a straight, confident smile with our advanced orthodontic treatments."
+        title="Orthodontic Treatment."
+      />
+      <section className="section-pad">
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1.2fr_.8fr] lg:px-8">
+          <div>
+            <p className="eyebrow">Everyday dental care</p>
+            <h2 className="section-title mt-5">Orthodontic Treatment at Oxford Dental Centre.</h2>
+            <p className="body-copy mt-7">
+              Achieve a straight, confident smile with our advanced orthodontic treatments, including popular clear aligners like Invisalign, Smilelign, and more. 
+              Whether you’re a teen or adult, we provide: 
+              <ul>
+                <li>Nearly invisible aligners for discreet teeth straightening</li>
+                <li>Shorter treatment times</li>
+                <li>Removable and easy-to-clean trays</li>
+                <li>Customized plans designed for minimal disruption.</li>
+              </ul>
+            </p>
+            <p className="body-copy mt-5">
+              
+            </p>
+          </div>
+          <aside className="self-start bg-[#e1ede9] p-8 lg:p-10">
+            <p className="eyebrow">Treatment quick details</p>
+            <div className="mt-7 space-y-5">
+              {[
+                ["Appointment time", "30–45 minutes"],
+                ["Comfort", "Gentle, unhurried care"],
+                ["Recommended", "Every 6–12 months"],
+                ["Fee", "From £65"],
+              ].map(([label, value]) => (
+                <div className="border-b border-[#14383d]/15 pb-5" key={label}>
+                  <p className="text-xs tracking-[.12em] text-[#607579] uppercase">{label}</p>
+                  <p className="mt-1 font-semibold">{value}</p>
+                </div>
+              ))}
+            </div>
+            <button className="button-primary mt-8 w-full" onClick={() => navigate("contact")}>
+              Ask about treatment <Icon name="arrow" size={18} />
+            </button>
+          </aside>
+        </div>
+      </section>
+      <section className="bg-[#14383d] py-24 text-white">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <p className="eyebrow text-[#9bc8bf]">Treatment fees</p>
+          <h2 className="mt-5 font-serif text-5xl">Clear fees. No surprises.</h2>
+          <div className="mt-10 grid gap-px bg-white/15 md:grid-cols-2">
+            {[
+              ["Routine examination", "£65"],
+              ["New patient examination", "£95"],
+              ["Small X-ray", "£18"],
+              ["White filling", "from £185"],
+            ].map(([name, price]) => (
+              <div className="flex justify-between bg-[#14383d] p-6" key={name}>
+                <span>{name}</span>
+                <strong>{price}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <CTA navigate={navigate} />
+    </>
+  );
+}
+
+function DentalImplantsPage({ navigate }: { navigate: (page: Page) => void }) {
+  return (
+    <>
+      <PageHero
+        eyebrow="Treatment details"
+        image={roomImage}
+        text="Dental solution that provides a long-term, stable option, looking, feeling, and functioning just like natural teeth."
+        title="Dental Implants Treatment."
+      />
+      <section className="section-pad">
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1.2fr_.8fr] lg:px-8">
+          <div>
+            <p className="eyebrow">Everyday dental care</p>
+            <h2 className="section-title mt-5">Dental Implants: Permanent Tooth Replacement That Feels Natural.</h2>
+            <p className="body-copy mt-7">
+              Missing teeth? Dental implants offer a permanent dental solution that provides a long-term, stable option, looking, feeling, and functioning just like natural teeth. 
+              
+              Why choose dental implants?
+
+              <ul>
+                <li>Prevent bone loss</li>
+                <li>Eat, speak, and smile with confidence</li>
+                <li>No slipping or clicking like dentures</li>
+                <li>Maintain facial structures and oral health</li>
+              </ul>
+              
+            </p>
+            <p className="body-copy mt-5">
+              Dental implant options we offer:
+              
+              <ul>
+                <li>Single or multiple implants</li>
+                <li>Implant-supported dentures</li>
+                <li>Full mouth rehabilitations (All-on-4/6/8)</li>
+              </ul>
+  
+              Dental implants are suitable for most healthy adults. Even if you’ve lost bone, we provide advanced treatments like bone grafts and sinus grafts to ensure effective tooth replacement.
+            </p>
+          </div>
+          <aside className="self-start bg-[#e1ede9] p-8 lg:p-10">
+            <p className="eyebrow">Treatment quick details</p>
+            <div className="mt-7 space-y-5">
+              {[
+                ["Appointment time", "30–45 minutes"],
+                ["Comfort", "Gentle, unhurried care"],
+                ["Recommended", "Every 6–12 months"],
+                ["Fee", "From £65"],
+              ].map(([label, value]) => (
+                <div className="border-b border-[#14383d]/15 pb-5" key={label}>
+                  <p className="text-xs tracking-[.12em] text-[#607579] uppercase">{label}</p>
+                  <p className="mt-1 font-semibold">{value}</p>
+                </div>
+              ))}
+            </div>
+            <button className="button-primary mt-8 w-full" onClick={() => navigate("contact")}>
+              Ask about treatment <Icon name="arrow" size={18} />
+            </button>
+          </aside>
+        </div>
+      </section>
+      <section className="bg-[#14383d] py-24 text-white">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <p className="eyebrow text-[#9bc8bf]">Treatment fees</p>
+          <h2 className="mt-5 font-serif text-5xl">Clear fees. No surprises.</h2>
+          <div className="mt-10 grid gap-px bg-white/15 md:grid-cols-2">
+            {[
+              ["Routine examination", "£65"],
+              ["New patient examination", "£95"],
+              ["Small X-ray", "£18"],
+              ["White filling", "from £185"],
+            ].map(([name, price]) => (
+              <div className="flex justify-between bg-[#14383d] p-6" key={name}>
+                <span>{name}</span>
+                <strong>{price}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <CTA navigate={navigate} />
+    </>
+  );
+}
+
+function ExtractionsPage({ navigate }: { navigate: (page: Page) => void }) {
+  return (
+    <>
+      <PageHero
+        eyebrow="Treatment details"
+        image={roomImage}
+        text="From simple extractions to complex surgical cases, we ensure every procedure is as painless and comfortable as possible.."
+        title="Oral & Teeth extractions treatment."
+      />
+      <section className="section-pad">
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1.2fr_.8fr] lg:px-8">
+          <div>
+            <p className="eyebrow">Everyday dental care</p>
+            <h2 className="section-title mt-5">Gentle, Stress-Free Tooth Removal.</h2>
+            <p className="body-copy mt-7">
+              From simple extractions to complex surgical cases, we ensure every procedure is as painless and comfortable as possible.
+              
+              We Perform:
+              <ul>
+                <li>Routine and complex extractions</li>
+                <li>Impacted wisdom tooth removals </li>
+                <li>Frenectomies</li>
+                <li>Pre-orthodontic extractions</li>
+              </ul>              
+              Why you may need  a Tooth Extracted?
+              <ul>
+                <li>Severe tooth decay or infection</li>
+                <li>Fractured or broken teeth beyond repair</li>
+                <li>Dental crowding before orthodontic treatment</li>
+                <li>Preparation for dentures</li>
+                <li>Impacted wisdom teeth</li>
+              </ul>
+            </p>
+            <p className="body-copy mt-5">
+              Why Choose Us?
+              <ul>
+                <li>Advanced Techniques. Exceptional Care</li>
+                <li>Modern anaesthetics for a pain-free experience</li>
+                <li>Clear aftercare instructions</li>
+                <li>Oral Surgeons for complex procedures</li>
+              </ul>
+            </p>
+          </div>
+          <aside className="self-start bg-[#e1ede9] p-8 lg:p-10">
+            <p className="eyebrow">Treatment quick details</p>
+            <div className="mt-7 space-y-5">
+              {[
+                ["Appointment time", "30–45 minutes"],
+                ["Comfort", "Gentle, unhurried care"],
+                ["Recommended", "Every 6–12 months"],
+                ["Fee", "From £65"],
+              ].map(([label, value]) => (
+                <div className="border-b border-[#14383d]/15 pb-5" key={label}>
+                  <p className="text-xs tracking-[.12em] text-[#607579] uppercase">{label}</p>
+                  <p className="mt-1 font-semibold">{value}</p>
+                </div>
+              ))}
+            </div>
+            <button className="button-primary mt-8 w-full" onClick={() => navigate("contact")}>
+              Ask about treatment <Icon name="arrow" size={18} />
+            </button>
+          </aside>
+        </div>
+      </section>
+      <section className="bg-[#14383d] py-24 text-white">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <p className="eyebrow text-[#9bc8bf]">Treatment fees</p>
+          <h2 className="mt-5 font-serif text-5xl">Clear fees. No surprises.</h2>
+          <div className="mt-10 grid gap-px bg-white/15 md:grid-cols-2">
+            {[
+              ["Routine examination", "£65"],
+              ["New patient examination", "£95"],
+              ["Small X-ray", "£18"],
+              ["White filling", "from £185"],
+            ].map(([name, price]) => (
+              <div className="flex justify-between bg-[#14383d] p-6" key={name}>
+                <span>{name}</span>
+                <strong>{price}</strong>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <CTA navigate={navigate} />
+    </>
+  );
+}
+
+function WisdomTeethRemovalPage({ navigate }: { navigate: (page: Page) => void }) {
+  return (
+    <>
+      <PageHero
+        eyebrow="Treatment details"
+        image={roomImage}
+        text="From simple extractions we ensure every procedure is as painless and comfortable as possible.."
+        title="Wisdom Teeth Removal treatment."
+      />
+      <section className="section-pad">
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1.2fr_.8fr] lg:px-8">
+          <div>
+            <p className="eyebrow">Everyday dental care</p>
+            <h2 className="section-title mt-5">Gentle Care for a Common Problem.</h2>
+            <p className="body-copy mt-7">
+              Wisdom teeth typically emerge in your late teens or early twenties. While some people never develop these third molars, others may face issues such as pain, crowding, or infections due to impacted wisdom teeth. 
+              
+              Symptoms of impacted wisdom teeth may include: 
+              <ul>
+                <li>Pain or swelling </li>
+                <li>Gum infection</li> 
+                <li>Damage to adjacent teeth </li>
+                <li>Cysts or decay </li>
+              </ul>
+            </p>
+            <p className="body-copy mt-5">
+              If you’re experiencing any of these issues, a dental extraction may be recommended. 
+              However, if your wisdom teeth are healthy and not causing problems, extraction may not be necessary.
             </p>
           </div>
           <aside className="self-start bg-[#e1ede9] p-8 lg:p-10">
