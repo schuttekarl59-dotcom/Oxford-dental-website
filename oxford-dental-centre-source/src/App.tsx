@@ -156,62 +156,7 @@ const treatments: TreatmentDetail[] = [
       },
     ],
   },
-    {
-    slug: "orthodontic-treatment",
-    title: "Orthodontic Treatment",
-    subtitle:
-      "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
-    text: "Personalised options to improve alignment, bite and long-term dental health.",
-    tag: "Straighten",
-    image: clinicImage,
-    page: "treatment",
-    eyebrow: "Everyday dental care",
-    heading: "",
-    intro:
-      "Achieve a straight, confident smile with our advanced orthodontic treatments, including popular clear aligners like Invisalign, Smilelign, and more. Whether you're a teen or adult, we provide: Nearly invisible aligners for discreet teeth straightening, shorter treatment times, removable and easy-to-clean trays, and customized plans designed for minimal disruption.",
-    quickNote:
-      "Call our friendly team today on 01865 493372 or 07985716665 to book your appointment or learn more about how white fillings can transform your smile.",
-    sections: [],
-  },
-
-    {
-    slug: "dental-implants",
-    title: "Dental Implants",
-    subtitle:
-      "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
-    text: "A secure, long-lasting solution for replacing missing teeth.",
-    tag: "Replace",
-    image: careImage,
-    page: "treatment",
-    eyebrow: "Everyday dental care",
-    heading: "Permanent Tooth Replacement That Feels Natural",
-    intro:
-      "Missing teeth? Dental implants offer a permanent dental solution that provides a long-term, stable option, looking, feeling, and functioning just like natural teeth.",
-    quickNote:
-      "Call our friendly team today on 01865 493372 or 07985716665 to book your appointment or learn more about how white fillings can transform your smile.",
-    sections: [
-      {
-        title: "Why choose dental implants?",
-        bullets: [
-          "Prevent bone loss",
-          "Eat, speak, and smile with confidence",
-          "No slipping or clicking like dentures",
-          "Maintain facial structures and oral health",
-        ],
-      },
-      {
-        title: "Dental implant options we offer:",
-        bullets: [
-          "Single or multiple implants",
-          "Implant-supported dentures",
-          "Full mouth rehabilitations (All-on-4/6/8)",
-        ],
-        paragraphs: [
-          "Dental implants are suitable for most healthy adults. Even if you've lost bone, we provide advanced treatments like bone grafts and sinus grafts to ensure effective tooth replacement.",
-        ],
-      },
-    ],
-  },
+  
 
     {
     slug: "orthodontic-treatment",
