@@ -4,6 +4,7 @@ import aaidLogo from "./assets/associates/aaid.png";
 import invisalignLogo from "./assets/associates/invisalign-provider.png";
 import smilelignLogo from "./assets/associates/smilelign.png";
 import clinicLogo from "./assets/oxford-dental-centre-logo.png";
+import dentistPhoto from "./assets/onwner.png";
 
 type Page =
   | "home"
@@ -33,248 +34,6 @@ const navItems: { label: string; page: Page }[] = [
   { label: "About", page: "about" },
 ];
 
-export interface TreatmentDetail {
-  slug: string;
-  title: string;
-  subtitle: string;
-  tag: string;
-  image: string;
-  heading: string;
-  intro: string;
-  sections: {
-    title?: string;
-    paragraphs?: string[];
-    bullets?: string[];
-    checklist?: string[];
-  }[];
-}
-
-const treatmentsData: TreatmentDetail[] = [
-  {
-    slug: "cosmetic",
-    title: "Cosmetic Dentistry",
-    subtitle: "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
-    tag: "Cosmetic",
-    image: careImage,
-    heading: "Innovative Dental Solutions",
-    intro: "Transform your smile with advanced cosmetic treatments tailored to your exact aesthetic goals.",
-    sections: [
-      {
-        title: "Porcelain Veneers",
-        paragraphs: [
-          "Correct chipped, uneven, stained, or gapped teeth with thin ceramic shells custom-crafted to your smile."
-        ],
-        bullets: [
-          "Natural appearance",
-          "Durable and stain-resistant",
-          "Dramatic improvement in just a few visits",
-          "Instantly brightens and balances your smile"
-        ]
-      },
-      {
-        title: "The Procedure:",
-        bullets: [
-          "Consultation & Smile Design",
-          "Tooth Preparation: (a small amount of enamel is shaved)",
-          "Impressions or scans",
-          "Custom Veneer Creation",
-          "Bonding & Final Reveal"
-        ]
-      },
-      {
-        title: "Composite Bonding",
-        paragraphs: [
-          "An affordable, non-invasive way to reshape, brighten, and correct flaws in your teeth – all in a single visit.",
-          "Get a flawless natural-looking smile without harming your natural teeth."
-        ],
-        bullets: [
-          "Perfect for cracks, chips, and gaps",
-          "Preserves natural tooth structure",
-          "Immediate results with no downtime"
-        ]
-      },
-      {
-        title: "Professional Teeth Whitening",
-        paragraphs: ["Brighten Your Smile. Boost Your Confidence."],
-        bullets: [
-          "Brighten your smile with our in-clinic or at-home whitening kits:",
-          "Safe and effective",
-          "Up to 8 shades whiter",
-          "Custom-fitted for comfort and results"
-        ]
-      }
-    ]
-  },
-  {
-    slug: "general",
-    title: "General Dentistry Services",
-    subtitle: "Tooth-Coloured Fillings – Smile with Confidence Ready to laugh freely and smile proudly?",
-    tag: "General care",
-    image: chairImage,
-    heading: "Tooth-Coloured Fillings – Smile with Confidence Ready to laugh freely and smile proudly?",
-    intro: "At Oxford Dental Centre, our expertly crafted tooth-coloured fillings give you every reason to show off your smile. Unlike traditional grey amalgam fillings, our modern, dental care materials blend seamlessly with your natural teeth – so no one will ever know you've had dental work done. These virtually invisible fillings are the ideal solution if you want a flawless, confident smile.",
-    sections: [
-      {
-        title: "Why choose Oxford Dental Centre for your general dentistry needs?",
-        checklist: [
-          "Natural-looking beautiful results",
-          "Performed by a highly skilled, experienced dentist",
-          "Feel confident to smile, laugh, and live boldly"
-        ],
-        paragraphs: [
-          "We use the latest techniques to ensure your comfort throughout the procedure.",
-          "In a relaxed atmosphere, peacefully restore your tooth's appearance and function without compromising your bite.",
-          "Our goal is simple: to leave you with a radiant, healthy smile you will be proud to share."
-        ]
-      }
-    ]
-  },
-  {
-    slug: "root-canal",
-    title: "Root Canal",
-    subtitle: "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
-    tag: "Preserve",
-    image: roomImage,
-    heading: "Root Canal Treatment: Pain-Free Endodontic Care at Oxford Dental Centre",
-    intro: "Root canal therapy doesn't have to be a daunting experience. It is a highly effective, pain-relieving solution designed to save an infected tooth from extraction while restoring your dental comfort and overall health.",
-    sections: [
-      {
-        title: "Signs You May Need a Root Canal",
-        bullets: [
-          "Persistent toothache or throbbing pain",
-          "Sensitivity to hot or cold",
-          "Swollen gums or tenderness",
-          "Discomfort when biting or chewing",
-          "Darkened or discolored teeth"
-        ],
-        paragraphs: [
-          "If you're experiencing any of these symptoms, don't delay. Early treatment can prevent complications."
-        ]
-      },
-      {
-        title: "What to Expect:",
-        bullets: [
-          "We'll numb the area to ensure your complete comfort.",
-          "The infected pulp is carefully removed.",
-          "The canals are thoroughly cleaned and sealed.",
-          "A crown is placed to protect and strengthen the tooth."
-        ],
-        paragraphs: [
-          "Typically, treatment requires one to two visits, depending on the tooth's condition."
-        ]
-      },
-      {
-        title: "After Treatment Care",
-        paragraphs: [
-          "Your tooth may be sensitive for a few days, but this sensitivity is temporary. We recommend placing a crown afterward to ensure long-term protection and to restore the tooth's strength and function."
-        ]
-      }
-    ]
-  },
-  {
-    slug: "orthodontic",
-    title: "Orthodontic Treatment",
-    subtitle: "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
-    tag: "Straighten",
-    image: clinicImage,
-    heading: "Healthy smiles start with a trusted routine.",
-    intro: "Achieve a straight, confident smile with our advanced orthodontic treatments, including popular clear aligners like Invisalign, Smilelign, and more.",
-    sections: []
-  },
-  {
-    slug: "implants",
-    title: "Dental Implants",
-    subtitle: "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
-    tag: "Replace",
-    image: careImage,
-    heading: "Permanent Tooth Replacement That Feels Natural",
-    intro: "Missing teeth? Dental implants offer a permanent dental solution that provides a long-term, stable option, looking, feeling, and functioning just like natural teeth.",
-    sections: [
-      {
-        title: "Why choose dental implants?",
-        bullets: [
-          "Prevent bone loss",
-          "Eat, speak, and smile with confidence",
-          "No slipping or clicking like dentures",
-          "Maintain facial structures and oral health"
-        ]
-      }
-    ]
-  },
-  {
-    slug: "crowns",
-    title: "Dental Crowns",
-    subtitle: "Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing.",
-    tag: "Restorative",
-    image: chairImage,
-    heading: "Restore Your Smile with Durable, Natural looking crowns",
-    intro: "At Oxford Dental centre, our custom-made dental crowns and bridges are expertly designed to restore damaged or missing teeth with strength, functionality, and a natural look.",
-    sections: [
-      {
-        title: "Benefits of Dental Crowns",
-        checklist: [
-          "Restores confidence",
-          "Restores strength and function",
-          "Protects against further damage",
-          "Improves appearance and alignment",
-          "Blends seamlessly with natural teeth",
-          "Long-lasting and durable"
-        ]
-      }
-    ]
-  },
-  {
-    slug: "wisdom-teeth",
-    title: "Wisdom Teeth Removal",
-    subtitle: "Assessment and treatment for painful, impacted or problematic wisdom teeth.",
-    tag: "Oral surgery",
-    image: roomImage,
-    heading: "Wisdom Teeth Removal",
-    intro: "Wisdom teeth typically emerge in your late teens or early twenties. While some people never develop these third molars, others may face issues such as pain, crowding, or infections due to impacted wisdom teeth.",
-    sections: [
-      {
-        title: "Symptoms of impacted wisdom teeth may include:",
-        bullets: [
-          "Pain or swelling",
-          "Gum infection",
-          "Damage to adjacent teeth",
-          "Cysts or decay"
-        ]
-      }
-    ]
-  },
-  {
-    slug: "dentures",
-    title: "Dentures",
-    subtitle: "Comfortable, natural-looking solutions designed to restore your smile and confidence.",
-    tag: "Restore",
-    image: careImage,
-    heading: "Dentures in Oxford",
-    intro: "Dentures are removable prosthetic devices used to replace missing teeth and surrounding gum tissue.",
-    sections: [
-      {
-        title: "Benefits of Dentures from Oxford Dental Centre",
-        checklist: [
-          "Natural Appearance – Designed to match original teeth.",
-          "Comfortable Fit – Secure fit with minimal irritation.",
-          "Facial Support – Reduces wrinkles and enhances facial structure.",
-          "Improved Function – Regain ability to eat, speak, and smile."
-        ]
-      }
-    ]
-  },
-  {
-    slug: "extractions",
-    title: "Oral and Teeth Extractions",
-    subtitle: "Considered, gentle removal care with clear guidance before and after your appointment.",
-    tag: "Oral surgery",
-    image: chairImage,
-    heading: "Oral and Teeth Extractions",
-    intro: "Gentle removal care with clear guidance before and after your appointment.",
-    sections: []
-  }
-];
-
 const treatments = [
   {
     title: "Dental emergencies",
@@ -282,7 +41,6 @@ const treatments = [
     image: roomImage,
     tag: "Urgent care",
     page: "emergency" as Page,
-    slug: "emergency",
   },
   {
     title: "Dentures",
@@ -290,7 +48,6 @@ const treatments = [
     image: careImage,
     tag: "Restore",
     page: "treatment" as Page,
-    slug: "dentures",
   },
   {
     title: "Root Canal",
@@ -298,7 +55,6 @@ const treatments = [
     image: chairImage,
     tag: "Preserve",
     page: "treatment" as Page,
-    slug: "root-canal",
   },
   {
     title: "Orthodontic treatment",
@@ -306,7 +62,6 @@ const treatments = [
     image: clinicImage,
     tag: "Straighten",
     page: "treatment" as Page,
-    slug: "orthodontic",
   },
   {
     title: "Dental implants",
@@ -314,7 +69,6 @@ const treatments = [
     image: careImage,
     tag: "Replace",
     page: "treatment" as Page,
-    slug: "implants",
   },
   {
     title: "Oral and Teeth Extractions",
@@ -322,7 +76,6 @@ const treatments = [
     image: roomImage,
     tag: "Oral surgery",
     page: "treatment" as Page,
-    slug: "extractions",
   },
   {
     title: "Wisdom teeth removal",
@@ -330,48 +83,7 @@ const treatments = [
     image: chairImage,
     tag: "Oral surgery",
     page: "treatment" as Page,
-    slug: "wisdom-teeth",
   },
-  {
-    title: "General Dentistry",
-    text: "Tooth-coloured fillings and routine care for a healthy, confident smile.",
-    image: roomImage,
-    tag: "General care",
-    page: "treatment" as Page,
-    slug: "general",
-  },
-  {
-    title: "Cosmetic Treatments",
-    text: "Transform your smile with porcelain veneers, composite bonding, and professional whitening.",
-    image: careImage,
-    tag: "Cosmetic",
-    page: "treatment" as Page,
-    slug: "cosmetic",
-  },
-  {
-    title: "Dental Crowns",
-    text: "Expertly designed crowns and bridges to restore damaged or missing teeth.",
-    image: chairImage,
-    tag: "Restorative",
-    page: "treatment" as Page,
-    slug: "crowns",
-  },
-  {
-    title: "Dental Bridges",
-    text: "Reliable bridgework to seamlessly bridge gaps left by missing teeth.",
-    image: careImage,
-    tag: "Restorative",
-    page: "treatment" as Page,
-    slug: "crowns",
-  },
-  {
-    title: "Oral Hygiene & Bad Breath",
-    text: "Professional cleaning and tailored guidance for pristine oral hygiene.",
-    image: roomImage,
-    tag: "Hygiene",
-    page: "treatment" as Page,
-    slug: "general",
-  }
 ];
 
 const fees = [
@@ -454,18 +166,14 @@ function Icon({
   );
 }
 
-export default function App() {
+function App() {
   const [page, setPage] = useState<Page>("home");
-  const [activeTreatmentSlug, setActiveTreatmentSlug] = useState<string>("cosmetic");
   const [menuOpen, setMenuOpen] = useState(false);
   const [portalMode, setPortalMode] = useState<"public" | "login" | "admin">("public");
   const [appointments, setAppointments] = useState<AdminAppointment[]>(seedAppointments);
 
-  const navigate = (next: Page, treatmentSlug?: string) => {
+  const navigate = (next: Page) => {
     setPage(next);
-    if (treatmentSlug) {
-      setActiveTreatmentSlug(treatmentSlug);
-    }
     setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -503,7 +211,7 @@ export default function App() {
       <main>
         {page === "home" && <HomePage navigate={navigate} />}
         {page === "treatments" && <TreatmentsPage navigate={navigate} />}
-        {page === "treatment" && <TreatmentPage navigate={navigate} slug={activeTreatmentSlug} />}
+        {page === "treatment" && <TreatmentPage navigate={navigate} />}
         {page === "emergency" && <EmergencyPage navigate={navigate} />}
         {page === "fees" && <FeesPage navigate={navigate} />}
         {page === "first-visit" && <FirstVisitPage navigate={navigate} />}
@@ -523,7 +231,7 @@ function Header({
   onAdminLogin,
 }: {
   page: Page;
-  navigate: (page: Page, slug?: string) => void;
+  navigate: (page: Page) => void;
   menuOpen: boolean;
   setMenuOpen: (open: boolean) => void;
   onAdminLogin: () => void;
@@ -604,7 +312,7 @@ function Header({
   );
 }
 
-function HomePage({ navigate }: { navigate: (page: Page, slug?: string) => void }) {
+function HomePage({ navigate }: { navigate: (page: Page) => void }) {
   const [review, setReview] = useState(0);
   const reviews = [
     {
@@ -643,8 +351,9 @@ function HomePage({ navigate }: { navigate: (page: Page, slug?: string) => void 
               <span className="block italic text-[#477c74]">wonderfully human.</span>
             </h1>
             <p className="mt-8 max-w-lg text-lg leading-8 text-[#3e565a]">
-              Modern dentistry, delivered with time, clarity and genuine kindness in the heart of
-              Oxford.
+              At Oxford Dental Centre, we provide a comprehensive array of dental care services,
+              which include preventive dentistry, restorative dentistry, and expert dental
+              implants.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <button className="button-primary" onClick={() => navigate("contact")}>
@@ -653,6 +362,17 @@ function HomePage({ navigate }: { navigate: (page: Page, slug?: string) => void 
               <button className="button-secondary" onClick={() => navigate("treatments")}>
                 Explore treatments
               </button>
+            </div>
+          </div>
+        </div>
+        <div className="absolute right-5 bottom-5 hidden rounded-sm bg-[#f7f7f2] p-5 shadow-xl md:block lg:right-10 lg:bottom-10">
+          <div className="flex items-center gap-4">
+            <span className="grid h-11 w-11 place-items-center rounded-full bg-[#e0efeb]">
+              <Icon name="clock" />
+            </span>
+            <div>
+              <p className="text-xs tracking-[.16em] text-[#677a7d] uppercase">Now welcoming</p>
+              <p className="mt-1 font-semibold">New patients</p>
             </div>
           </div>
         </div>
@@ -709,7 +429,7 @@ function HomePage({ navigate }: { navigate: (page: Page, slug?: string) => void 
               <button
                 className="group relative min-h-[480px] overflow-hidden bg-[#14383d] text-left"
                 key={treatment.title}
-                onClick={() => navigate(treatment.page, treatment.slug)}
+                onClick={() => navigate(treatment.page)}
               >
                 <img
                   alt=""
@@ -785,17 +505,6 @@ function HomePage({ navigate }: { navigate: (page: Page, slug?: string) => void 
           </div>
         </div>
       </section>
-
-      <div className="py-12 bg-white border-t border-[#14383d]/10">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8 text-center">
-          <p className="eyebrow mb-6">Proudly associated with</p>
-          <div className="flex flex-wrap items-center justify-center gap-12">
-            <img alt="Invisalign provider logo" className="h-10 w-auto object-contain" src={invisalignLogo} />
-            <img alt="AAID logo" className="h-10 w-auto object-contain" src={aaidLogo} />
-            <img alt="Smilelign logo" className="h-10 w-auto object-contain" src={smilelignLogo} />
-          </div>
-        </div>
-      </div>
     </>
   );
 }
@@ -830,7 +539,7 @@ function PageHero({
   );
 }
 
-function TreatmentsPage({ navigate }: { navigate: (page: Page, slug?: string) => void }) {
+function TreatmentsPage({ navigate }: { navigate: (page: Page) => void }) {
   return (
     <>
       <PageHero
@@ -853,7 +562,7 @@ function TreatmentsPage({ navigate }: { navigate: (page: Page, slug?: string) =>
               <article className="group" key={treatment.title}>
                 <button
                   className="block w-full overflow-hidden text-left"
-                  onClick={() => navigate(treatment.page, treatment.slug)}
+                  onClick={() => navigate(treatment.page)}
                 >
                   <img
                     alt=""
@@ -866,7 +575,7 @@ function TreatmentsPage({ navigate }: { navigate: (page: Page, slug?: string) =>
                 </p>
                 <h3 className="mt-2 font-serif text-3xl">{treatment.title}</h3>
                 <p className="mt-3 leading-7 text-[#52666a]">{treatment.text}</p>
-                <button className="text-link mt-5" onClick={() => navigate(treatment.page, treatment.slug)}>
+                <button className="text-link mt-5" onClick={() => navigate(treatment.page)}>
                   Learn more <Icon name="arrow" size={17} />
                 </button>
               </article>
@@ -874,93 +583,67 @@ function TreatmentsPage({ navigate }: { navigate: (page: Page, slug?: string) =>
           </div>
         </div>
       </section>
-
-      <div className="py-12 bg-white border-t border-[#14383d]/10">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8 text-center">
-          <p className="eyebrow mb-6">Proudly associated with</p>
-          <div className="flex flex-wrap items-center justify-center gap-12">
-            <img alt="Invisalign provider logo" className="h-10 w-auto object-contain" src={invisalignLogo} />
-            <img alt="AAID logo" className="h-10 w-auto object-contain" src={aaidLogo} />
-            <img alt="Smilelign logo" className="h-10 w-auto object-contain" src={smilelignLogo} />
-          </div>
-        </div>
-      </div>
-
       <CTA navigate={navigate} />
     </>
   );
 }
 
-function TreatmentPage({ navigate, slug }: { navigate: (page: Page, slug?: string) => void; slug: string }) {
-  const data = treatmentsData.find((t) => t.slug === slug) || treatmentsData[0];
-
+function TreatmentPage({ navigate }: { navigate: (page: Page) => void }) {
   return (
     <>
       <PageHero
         eyebrow="Treatment details"
-        image={data.image}
-        text={data.subtitle}
-        title={data.title}
+        image={roomImage}
+        text="Clear, considerate treatment planning focused on your comfort, dental health and long-term wellbeing."
+        title="Personalised dental care."
       />
       <section className="section-pad">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1.2fr_.8fr] lg:px-8">
           <div>
             <p className="eyebrow">Everyday dental care</p>
-            <h2 className="section-title mt-5">{data.heading}</h2>
-            <p className="body-copy mt-7">{data.intro}</p>
-
-            {data.sections.map((sec, idx) => (
-              <div key={idx} className="mt-10">
-                {sec.title && <h3 className="font-serif text-2xl text-[#14383d] mb-4">{sec.title}</h3>}
-                {sec.paragraphs?.map((p, pIdx) => (
-                  <p key={pIdx} className="body-copy mt-4">{p}</p>
-                ))}
-                {sec.bullets && (
-                  <ul className="mt-4 space-y-3">
-                    {sec.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-3">
-                        <span className="mt-1.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-[#9bc8bf]">
-                          <Icon name="check" size={10} />
-                        </span>
-                        <span className="text-[#485f63] font-medium">{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {sec.checklist && (
-                  <div className="mt-6 space-y-4">
-                    {sec.checklist.map((check, cIdx) => (
-                      <div className="flex items-center gap-3 border-b border-[#14383d]/15 pb-3" key={cIdx}>
-                        <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#9bc8bf]">
-                          <Icon name="check" size={13} />
-                        </span>
-                        <span className="font-medium">{check}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+            <h2 className="section-title mt-5">Healthy smiles start with a trusted routine.</h2>
+            <p className="body-copy mt-7">
+              Regular examinations help us spot small changes before they become bigger concerns.
+              Your visit is also time to talk—about sensitivity, confidence, habits or anything else
+              on your mind.
+            </p>
+            <p className="body-copy mt-5">
+              We use digital imaging and careful clinical assessment to build a complete picture,
+              then explain our findings in plain English.
+            </p>
           </div>
-
           <aside className="self-start bg-[#e1ede9] p-8 lg:p-10">
             <p className="eyebrow">Treatment quick details</p>
-            <p className="mt-4 leading-7 text-[#51676a]">
-              Call our friendly team today on 01865 493372 or 07985 716665 to book your appointment or learn more about how our treatments can transform your smile.
-            </p>
+            <div className="mt-7 space-y-5">
+              {[
+                ["Appointment time", "30–45 minutes"],
+                ["Comfort", "Gentle, unhurried care"],
+                ["Recommended", "Every 6–12 months"],
+                ["Fee", "From £65"],
+              ].map(([label, value]) => (
+                <div className="border-b border-[#14383d]/15 pb-5" key={label}>
+                  <p className="text-xs tracking-[.12em] text-[#607579] uppercase">{label}</p>
+                  <p className="mt-1 font-semibold">{value}</p>
+                </div>
+              ))}
+            </div>
             <button className="button-primary mt-8 w-full" onClick={() => navigate("contact")}>
               Ask about treatment <Icon name="arrow" size={18} />
             </button>
           </aside>
         </div>
       </section>
-
       <section className="bg-[#14383d] py-24 text-white">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <p className="eyebrow text-[#9bc8bf]">Treatment fees</p>
           <h2 className="mt-5 font-serif text-5xl">Clear fees. No surprises.</h2>
           <div className="mt-10 grid gap-px bg-white/15 md:grid-cols-2">
-            {fees.map(([name, price]) => (
+            {[
+              ["Routine examination", "£65"],
+              ["New patient examination", "£95"],
+              ["Small X-ray", "£18"],
+              ["White filling", "from £185"],
+            ].map(([name, price]) => (
               <div className="flex justify-between bg-[#14383d] p-6" key={name}>
                 <span>{name}</span>
                 <strong>{price}</strong>
@@ -969,18 +652,6 @@ function TreatmentPage({ navigate, slug }: { navigate: (page: Page, slug?: strin
           </div>
         </div>
       </section>
-
-      <div className="py-12 bg-white border-t border-[#14383d]/10">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8 text-center">
-          <p className="eyebrow mb-6">Proudly associated with</p>
-          <div className="flex flex-wrap items-center justify-center gap-12">
-            <img alt="Invisalign provider logo" className="h-10 w-auto object-contain" src={invisalignLogo} />
-            <img alt="AAID logo" className="h-10 w-auto object-contain" src={aaidLogo} />
-            <img alt="Smilelign logo" className="h-10 w-auto object-contain" src={smilelignLogo} />
-          </div>
-        </div>
-      </div>
-
       <CTA navigate={navigate} />
     </>
   );
@@ -1006,6 +677,16 @@ function EmergencyPage({ navigate }: { navigate: (page: Page) => void }) {
                 call us immediately. We prioritise emergency dental care to help you get fast and
                 effective relief when you need it most.
               </p>
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                {["Call the practice", "Explain your symptoms", "See our team promptly"].map(
+                  (step, index) => (
+                    <div className="border border-[#14383d]/15 p-6" key={step}>
+                      <span className="text-xs text-[#588078]">0{index + 1}</span>
+                      <p className="mt-7 font-serif text-2xl">{step}</p>
+                    </div>
+                  ),
+                )}
+              </div>
             </div>
             <aside className="bg-[#e4b982] p-8 lg:p-10">
               <p className="eyebrow">Dental emergency numbers</p>
@@ -1024,7 +705,45 @@ function EmergencyPage({ navigate }: { navigate: (page: Page) => void }) {
                   07985 716665
                 </a>
               </div>
+              <p className="mt-6 leading-7">
+                If you are experiencing facial swelling that affects breathing, go to A&amp;E or
+                call 999 immediately.
+              </p>
+              <div className="mt-8 border-t border-[#14383d]/20 pt-7">
+                <p className="text-xs tracking-[.14em] uppercase">Same-day emergency care</p>
+                <p className="mt-2 leading-7">
+                  Our experienced team aims to see emergency cases on the same day, so you are not
+                  left waiting in discomfort.
+                </p>
+              </div>
             </aside>
+          </div>
+          <div className="mt-20 bg-[#e1ede9] p-8 lg:p-14">
+            <p className="eyebrow">Common emergencies that Oxford treats</p>
+            <h2 className="mt-5 max-w-3xl font-serif text-4xl leading-tight md:text-5xl">
+              Fast, effective relief when you need it most.
+            </h2>
+            <div className="mt-10 grid gap-x-12 gap-y-4 md:grid-cols-2">
+              {[
+                "Toothache and dental abscesses",
+                "Broken or chipped teeth",
+                "Lost fillings or crowns",
+                "Gum swelling or bleeding",
+                "Painful wisdom teeth",
+                "Damaged implants or exposed implants",
+                "Broken or loose dentures",
+              ].map((emergency) => (
+                <div
+                  className="flex items-center gap-4 border-b border-[#14383d]/15 py-4"
+                  key={emergency}
+                >
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#9bc8bf]">
+                    <Icon name="check" size={15} />
+                  </span>
+                  <span className="font-medium">{emergency}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1039,17 +758,21 @@ function FeesPage({ navigate }: { navigate: (page: Page) => void }) {
       <PageHero
         eyebrow="Fees and finances"
         image={careImage}
-        text="Enjoy dental fee transparency with no hidden costs, ensuring you always know what you're paying for."
+        text="We are open about costs from the start. You will receive a written estimate before treatment begins."
         title="Clarity at every step."
       />
       <section className="section-pad">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="mb-20 max-w-4xl">
-            <h2 className="section-title">Transparent Dental Fees and Clear Communication</h2>
+            <p className="eyebrow">Transparent dental fees and clear communication</p>
+            <h2 className="section-title mt-5">Know where you stand from the start.</h2>
             <p className="body-copy mt-7 max-w-4xl">
               Oxford Dental Centre is dedicated to ensuring dental fee transparency through a clear
               pricing model. We provide comprehensive treatment plans and straightforward
               explanations of your care, helping you fully understand the value of your treatment.
+              As costs depend on the complexity of your specific dental needs, we provide a thorough
+              treatment plan and fee estimate immediately after your consultation. Consultation fees
+              are £95 for adults and £65 for children.
             </p>
           </div>
           <div className="grid gap-14 lg:grid-cols-[1.2fr_.8fr]">
@@ -1067,6 +790,10 @@ function FeesPage({ navigate }: { navigate: (page: Page) => void }) {
                   </div>
                 ))}
               </div>
+              <p className="mt-5 text-sm leading-6 text-[#627579]">
+                Fees are a guide and may vary according to clinical need. A full written estimate is
+                always provided.
+              </p>
             </div>
             <div>
               <div className="bg-[#e1ede9] p-8 lg:p-10">
@@ -1074,6 +801,7 @@ function FeesPage({ navigate }: { navigate: (page: Page) => void }) {
                 <h3 className="mt-5 font-serif text-3xl">Spread the cost of care.</h3>
                 <p className="mt-5 leading-7 text-[#51676a]">
                   Flexible finance options are available on selected treatments, subject to status.
+                  Our reception team can explain the options and help you apply.
                 </p>
                 <button className="button-primary mt-8" onClick={() => navigate("contact")}>
                   Ask reception <Icon name="arrow" size={18} />
@@ -1083,81 +811,67 @@ function FeesPage({ navigate }: { navigate: (page: Page) => void }) {
           </div>
         </div>
       </section>
-
-      <div className="py-12 bg-white border-t border-[#14383d]/10">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8 text-center">
-          <p className="eyebrow mb-6">Proudly associated with</p>
-          <div className="flex flex-wrap items-center justify-center gap-12">
-            <img alt="Invisalign provider logo" className="h-10 w-auto object-contain" src={invisalignLogo} />
-            <img alt="AAID logo" className="h-10 w-auto object-contain" src={aaidLogo} />
-            <img alt="Smilelign logo" className="h-10 w-auto object-contain" src={smilelignLogo} />
-          </div>
-        </div>
-      </div>
-
-      <CTA navigate={navigate} />
     </>
   );
 }
 
 function FirstVisitPage({ navigate }: { navigate: (page: Page) => void }) {
+  const cards = [
+    {
+      title: "What to bring with you",
+      text: "A list of current medication, relevant medical details and any questions you would like us to answer.",
+    },
+    {
+      title: "What documents you need",
+      text: "Please complete your medical history form before you arrive. We will send it securely by email.",
+    },
+    {
+      title: "Nervous about the dentist?",
+      text: "Tell us when you book. We will allow extra time, explain each step and move entirely at your pace.",
+    },
+  ];
   return (
     <>
       <PageHero
-        eyebrow="First-visit page"
-        image={chairImage}
-        text="We understand dental anxiety and know is real. We offer a calm, pressure-free environment tailored for nervous patients."
-        title="Gentle, Compassionate Dental Care"
+        eyebrow="First time at the practice"
+        image={roomImage}
+        text="Your first visit is a chance to get to know us, talk about what matters to you and make a plan together."
+        title="A warm welcome awaits."
       />
       <section className="section-pad">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="border border-[#14383d]/15 bg-white p-8">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-[#e1ede9] font-semibold text-[#14383d] text-sm">
-                01
-              </span>
-              <h3 className="mt-6 font-serif text-2xl">What to bring with you</h3>
-              <p className="mt-4 leading-7 text-[#52666a]">
-                A list of current medication, relevant medical details and any questions you would like
-                us to answer.
+          <div className="grid gap-5 md:grid-cols-3">
+            {cards.map((card, index) => (
+              <article className="border border-[#14383d]/15 p-8 lg:p-10" key={card.title}>
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-[#9bc8bf] font-semibold">
+                  0{index + 1}
+                </span>
+                <h2 className="mt-8 font-serif text-3xl">{card.title}</h2>
+                <p className="mt-5 leading-7 text-[#53686b]">{card.text}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-20 grid items-center gap-14 bg-[#e1ede9] lg:grid-cols-2">
+            <img
+              alt="Our calm and modern dental practice"
+              className="h-full min-h-[430px] w-full object-cover"
+              src={careImage}
+            />
+            <div className="p-8 lg:p-14">
+              <p className="eyebrow">Your first appointment</p>
+              <h2 className="mt-5 font-serif text-4xl">Time to talk. Time to listen.</h2>
+              <p className="mt-6 leading-8 text-[#506569]">
+                We will discuss your dental and medical history, carry out a comprehensive
+                assessment and take any images needed. Most importantly, we will listen to your
+                goals and concerns.
               </p>
-            </div>
-            <div className="border border-[#14383d]/15 bg-white p-8">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-[#e1ede9] font-semibold text-[#14383d] text-sm">
-                02
-              </span>
-              <h3 className="mt-6 font-serif text-2xl">What documents you need</h3>
-              <p className="mt-4 leading-7 text-[#52666a]">
-                Please complete your medical history form before you arrive. We will send it securely
-                by email.
-              </p>
-            </div>
-            <div className="border border-[#14383d]/15 bg-white p-8">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-[#e1ede9] font-semibold text-[#14383d] text-sm">
-                03
-              </span>
-              <h3 className="mt-6 font-serif text-2xl">Nervous about the dentist?</h3>
-              <p className="mt-4 leading-7 text-[#52666a]">
-                Tell us when you book. We will allow extra time, explain each step and move entirely
-                at your pace.
-              </p>
+              <button className="button-primary mt-8" onClick={() => navigate("contact")}>
+                Book your first visit <Icon name="arrow" size={18} />
+              </button>
             </div>
           </div>
         </div>
       </section>
-
-      <div className="py-12 bg-white border-t border-[#14383d]/10">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8 text-center">
-          <p className="eyebrow mb-6">Proudly associated with</p>
-          <div className="flex flex-wrap items-center justify-center gap-12">
-            <img alt="Invisalign provider logo" className="h-10 w-auto object-contain" src={invisalignLogo} />
-            <img alt="AAID logo" className="h-10 w-auto object-contain" src={aaidLogo} />
-            <img alt="Smilelign logo" className="h-10 w-auto object-contain" src={smilelignLogo} />
-          </div>
-        </div>
-      </div>
-
-      <CTA navigate={navigate} />
     </>
   );
 }
@@ -1166,40 +880,115 @@ function AboutPage({ navigate }: { navigate: (page: Page) => void }) {
   return (
     <>
       <PageHero
-        eyebrow="About Oxford Dental Centre"
-        image={roomImage}
-        text="An independent dental practice built on clinical excellence, time, trust and a genuinely caring approach."
-        title="Meet our practice."
+        eyebrow="About the practice"
+        image={clinicImage}
+        text="Independent in spirit, personal in approach and uncompromising about clinical standards."
+        title="Dentistry with heart."
       />
       <section className="section-pad">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid items-center gap-14 lg:grid-cols-2">
+          <div className="grid gap-14 lg:grid-cols-2">
             <div>
-              <p className="eyebrow">Our philosophy</p>
-              <h2 className="section-title mt-5">Dentistry as it should be.</h2>
-              <p className="body-copy mt-7">
-                Located on Banbury Road in Oxford, our practice was founded with a clear goal: to
-                offer unhurried, exceptional dental care in an environment that feels calm and
-                welcoming.
+              <p className="eyebrow">Providing exceptional dental care and services</p>
+              <h2 className="section-title mt-5">Built around people, not appointments.</h2>
+            </div>
+            <div>
+              <p className="body-copy">
+                Oxford Dental Centre was created to offer a more personal kind of dentistry—one
+                where clinicians have time to listen, teams know their patients and every decision
+                is made with long-term wellbeing in mind.
+              </p>
+              <p className="body-copy mt-6">
+                We invest in modern technology because it makes care more precise and comfortable,
+                but warmth, trust and excellent communication will always be at the heart of what we
+                do.
               </p>
             </div>
-            <div className="bg-[#e1ede9] p-8 lg:p-12">
-              <p className="eyebrow">Accreditations &amp; Associates</p>
-              <h3 className="mt-4 font-serif text-3xl">Trusted standards</h3>
-              <div className="mt-8 grid grid-cols-3 gap-6 items-center">
-                <img alt="AAID logo" className="max-h-12 w-auto object-contain" src={aaidLogo} />
+          </div>
+          <div className="mt-20 border border-[#14383d]/10 bg-white px-6 py-10 shadow-[0_20px_60px_rgba(20,56,61,.08)] md:px-10 lg:px-16 lg:py-14">
+            <div className="flex items-center gap-5 md:gap-8">
+              <span className="h-px flex-1 bg-[#74bfd1]/70" />
+              <h3 className="text-center text-xl font-medium tracking-[.05em] text-[#248caf] uppercase md:text-3xl">
+                Meet the principal dentist
+              </h3>
+              <span className="h-px flex-1 bg-[#74bfd1]/70" />
+            </div>
+            <div className="mt-12 grid items-start gap-10 lg:grid-cols-[330px_1fr] lg:gap-14">
+              <div className="bg-[#eef4f2]">
                 <img
-                  alt="Invisalign provider logo"
-                  className="max-h-12 w-auto object-contain"
-                  src={invisalignLogo}
+                  alt="Dr. Leonard Bowora, principal dentist at Oxford Dental Centre"
+                  className="aspect-[.74] w-full object-cover object-top"
+                  src="/dr-leonard-bowora.png"
                 />
-                <img alt="Smilelign logo" className="max-h-12 w-auto object-contain" src={smilelignLogo} />
+              </div>
+              <div>
+                <h4 className="font-serif text-4xl text-[#172c32]">Dr. Leonard Bowora</h4>
+                <p className="mt-5 max-w-3xl text-sm leading-7 text-[#52676a] italic">
+                  MSc (Oral Surgery), BChD, DCR(T), PDD (US), DUI (Implantology) – Lille, France,
+                  Assoc. Fellow (AAID, USA)
+                </p>
+                <p className="mt-2 text-sm font-semibold text-[#29464b]">
+                  Dental surgeon / Implant, Cosmetic &amp; General Dentistry
+                </p>
+                <p className="mt-1 text-sm font-medium text-[#52676a]">GDC Number 75199</p>
+                <p className="mt-8 max-w-3xl leading-8 text-[#42595d] italic">
+                  With more than 30 years of experience, Dr. Leonard Bowora is a highly respected
+                  dental surgeon known for his warm approach, meticulous care, and advanced
+                  expertise in Oral Surgery, Dental Implants, Cosmetic Dentistry, Endodontics, and
+                  Conscious Sedation. He believes that every smile is unique and is dedicated to
+                  providing personalised care tailored to each patient’s needs and comfort.
+                </p>
+                <div className="mt-10 border-t border-[#14383d]/10 pt-9">
+                  <h5 className="font-serif text-3xl text-[#172c32]">Skills and Experience</h5>
+                  <div className="mt-6 space-y-6 leading-8 text-[#52676a]">
+                    <p>
+                      Dr Bowora began his healthcare career in 1987, earning a Diploma in
+                      Radiotherapy from the College of Radiographers in London. He went on to
+                      complete his Dentistry degree in Cape Town in 1994 and moved to the UK in
+                      1998, where he has been committed to delivering high-quality dental care ever
+                      since.
+                    </p>
+                    <p>
+                      His passion for excellence is reflected in his extensive training and
+                      qualifications. He achieved Certification in Dental Implantology from the
+                      renowned Hilt Tatum Institute in 2002 and attended a year-long Conscious
+                      Sedation programme at the University of Newcastle in 2003. That same year, he
+                      graduated Cum Laude with a Postgraduate Diploma in Clinical Dentistry.
+                    </p>
+                    <p>
+                      Continuing to expand his knowledge, he completed a Postgraduate Residency in
+                      Dental Implantology at the Medical and Dental University of Lille 2 in France
+                      in 2010 and has recently been awarded a Master’s degree in Oral Surgery (MSc).
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
+            <article className="mt-12 border-t border-[#14383d]/10 pt-10 lg:px-2">
+              <h4 className="font-serif text-4xl text-[#172c32]">More about Dr Bowora</h4>
+              <div className="mt-7 max-w-5xl space-y-5 leading-8 text-[#52676a]">
+                <p>
+                  In 2011, Dr Bowora became an Associate Fellow of the prestigious American Academy
+                  of Implant Dentistry and is a member of the Alabama Implant Study Group in the
+                  USA.
+                </p>
+                <p>
+                  His experience extends to managing complex Oral and Maxillofacial cases, including
+                  impacted teeth and advanced extractions—often performed under conscious sedation.
+                </p>
+                <p>
+                  Outside the clinic, Dr Bowora enjoys spending time outdoors. He is passionate
+                  about farming and loves being with his family at their allotment, where he finds
+                  joy in nurturing both plants and cherished family moments.
+                </p>
+              </div>
+              <button className="button-primary mt-9" onClick={() => navigate("contact")}>
+                Book an appointment <Icon name="arrow" size={18} />
+              </button>
+            </article>
           </div>
         </div>
       </section>
-      <CTA navigate={navigate} />
     </>
   );
 }
@@ -1209,179 +998,186 @@ function ContactPage({
 }: {
   setAppointments: React.Dispatch<React.SetStateAction<AdminAppointment[]>>;
 }) {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    treatment: "Routine Examination",
-    date: "",
-    notes: "",
-  });
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    const newAppt: AdminAppointment = {
-      id: "APT-" + Math.floor(1000 + Math.random() * 9000),
-      patientName: form.name,
-      email: form.email,
-      phone: form.phone,
-      treatment: form.treatment,
-      date: form.date || new Date().toISOString().split("T")[0],
+  const [sent, setSent] = useState(false);
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const newAppointment: AdminAppointment = {
+      id: `REQ-${Date.now().toString().slice(-6)}`,
+      patientName: String(data.get("name") ?? ""),
+      email: String(data.get("email") ?? ""),
+      phone: String(data.get("phone") ?? ""),
+      treatment: String(data.get("treatment") ?? ""),
+      date: String(data.get("date") ?? ""),
       status: "pending",
     };
-    setAppointments((prev) => [newAppt, ...prev]);
-    setSubmitted(true);
-  };
 
+    setAppointments((items) => [newAppointment, ...items]);
+    setSent(true);
+  };
   return (
     <>
       <PageHero
         eyebrow="Contact and appointments"
-        image={chairImage}
+        image={roomImage}
         text="Whether you are ready to book or simply have a question, our friendly reception team is here to help."
         title="Let’s start a conversation."
       />
       <section className="section-pad">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid gap-14 lg:grid-cols-[1.2fr_.8fr]">
-            <div className="border border-[#14383d]/15 bg-white p-8 lg:p-12">
-              {submitted ? (
-                <div className="py-12 text-center">
-                  <span className="inline-grid h-16 w-16 place-items-center rounded-full bg-[#e1ede9] text-[#14383d] text-2xl mb-6">
-                    ✓
-                  </span>
-                  <h3 className="font-serif text-3xl">Appointment Request Received</h3>
-                  <p className="mt-4 text-[#52666a] max-w-md mx-auto">
-                    Thank you, {form.name}. Our reception team will review your request and contact you
-                    shortly.
-                  </p>
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1.15fr_.85fr] lg:px-8">
+          <div>
+            <p className="eyebrow">Request an appointment</p>
+            <h2 className="mt-5 font-serif text-5xl">How can we help?</h2>
+            {sent ? (
+              <div className="mt-10 bg-[#e1ede9] p-10">
+                <span className="grid h-12 w-12 place-items-center rounded-full bg-[#9bc8bf]">
+                  <Icon name="check" />
+                </span>
+                <h3 className="mt-6 font-serif text-3xl">Thank you for getting in touch.</h3>
+                <p className="mt-4 leading-7 text-[#52676a]">
+                  Your request has been added to the admin team’s pending appointments. The
+                  reception team would contact you shortly to confirm the details.
+                </p>
+                <button className="text-link mt-6" onClick={() => setSent(false)}>
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <form className="mt-10 grid gap-5 sm:grid-cols-2" onSubmit={submit}>
+                <Field label="Patient name" name="name" placeholder="Your full name" required />
+                <Field
+                  label="Email address"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                  type="email"
+                />
+                <Field
+                  label="Contact number"
+                  name="phone"
+                  placeholder="Your phone number"
+                  required
+                  type="tel"
+                />
+                <Field label="Appointment date" name="date" required type="date" />
+                <Field label="Preferred time" name="time" required type="time" />
+                <label className="sm:col-span-2">
+                  <span className="field-label">How would you like us to help?</span>
+                  <select className="field-input" defaultValue="" name="treatment" required>
+                    <option disabled value="">
+                      Choose an option
+                    </option>
+                    <option>New patient examination</option>
+                    <option>Routine appointment</option>
+                    <option>Dental emergencies</option>
+                    <option>Dentures</option>
+                    <option>Root Canal</option>
+                    <option>Orthodontic treatment</option>
+                    <option>Dental implants</option>
+                    <option>Oral and Teeth Extractions</option>
+                    <option>Wisdom teeth removal</option>
+                    <option>Other treatment enquiry</option>
+                  </select>
+                </label>
+                <label className="sm:col-span-2">
+                  <span className="field-label">Message</span>
+                  <textarea
+                    className="field-input min-h-36 resize-y"
+                    name="message"
+                    placeholder="Tell us a little more..."
+                  />
+                </label>
+                <div className="flex flex-wrap gap-3 sm:col-span-2">
+                  <button className="button-primary" type="submit">
+                    Send enquiry <Icon name="arrow" size={18} />
+                  </button>
+                  <button className="button-secondary" type="reset">
+                    Clear
+                  </button>
                 </div>
-              ) : (
-                <form className="space-y-6" onSubmit={handleSubmit}>
-                  <p className="eyebrow">Request an appointment</p>
-                  <h3 className="font-serif text-3xl">How can we help?</h3>
-                  <div>
-                    <label className="field-label" htmlFor="name">Patient Name</label>
-                    <input
-                      required
-                      className="field-input"
-                      id="name"
-                      placeholder="Your full name"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label className="field-label" htmlFor="phone">Contact Number</label>
-                    <input
-                      required
-                      type="tel"
-                      className="field-input"
-                      id="phone"
-                      placeholder="Your phone number"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label className="field-label" htmlFor="email">Email Address</label>
-                    <input
-                      required
-                      type="email"
-                      className="field-input"
-                      id="email"
-                      placeholder="you@example.com"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label className="field-label" htmlFor="notes">Message</label>
-                    <textarea
-                      className="field-input min-h-[120px]"
-                      id="notes"
-                      placeholder="Tell us a little more..."
-                      value={form.notes}
-                      onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                    />
-                  </div>
-                  <div className="flex gap-4">
-                    <button className="button-primary" type="submit">
-                      Send enquiry <Icon name="arrow" size={18} />
-                    </button>
-                    <button
-                      type="button"
-                      className="button-secondary"
-                      onClick={() => setForm({ name: "", email: "", phone: "", treatment: "Routine Examination", date: "", notes: "" })}
-                    >
-                      Clear
-                    </button>
-                  </div>
-                </form>
-              )}
-            </div>
-
-            <aside className="bg-[#14383d] p-8 lg:p-10 text-white space-y-8">
-              <div>
-                <p className="eyebrow text-[#9bc8bf]">Contact Information</p>
-              </div>
-              <div className="border-b border-white/15 pb-6">
-                <p className="text-xs uppercase tracking-wider text-[#9bc8bf]">Telephone</p>
-                <a className="mt-1 block font-serif text-2xl hover:underline" href="tel:+441865493372">
-                  +44 1865 493372
-                </a>
-              </div>
-              <div className="border-b border-white/15 pb-6">
-                <p className="text-xs uppercase tracking-wider text-[#9bc8bf]">Emergency Contact</p>
-                <a className="mt-1 block font-serif text-2xl hover:underline" href="tel:+447985716665">
-                  +44 7985 716665
-                </a>
-              </div>
-              <div className="border-b border-white/15 pb-6">
-                <p className="text-xs uppercase tracking-wider text-[#9bc8bf]">Find Us</p>
-                <p className="mt-1 font-serif text-lg">162 Banbury Road, Oxford OX2 7BT</p>
-              </div>
-              <div className="border-b border-white/15 pb-6">
-                <p className="text-xs uppercase tracking-wider text-[#9bc8bf]">Working Hours</p>
-                <p className="mt-1 text-sm text-white/80">Monday–Friday, 09:00–17:00</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-wider text-[#9bc8bf]">Email</p>
-                <a className="mt-1 block text-sm hover:underline" href="mailto:info@oxforddentalcentre.co.uk">
-                  info@oxforddentalcentre.co.uk
-                </a>
-              </div>
-            </aside>
+              </form>
+            )}
           </div>
+          <aside>
+            <div className="bg-[#14383d] p-8 text-white lg:p-10">
+              <p className="eyebrow text-[#9bc8bf]">Contact information</p>
+              <div className="mt-8 space-y-7">
+                <ContactLine icon="phone" label="Telephone" value="+44 1865 493372" />
+                <ContactLine icon="phone" label="Emergency contact" value="+44 7985 716665" />
+                <ContactLine icon="pin" label="Find us" value="162 Banbury Road, Oxford OX2 7BT" />
+                <ContactLine
+                  icon="clock"
+                  label="Working hours"
+                  value="Monday–Friday, 09:00–17:00"
+                />
+                <div className="border-b border-white/15 pb-7">
+                  <p className="text-xs tracking-[.14em] text-white/50 uppercase">Email</p>
+                  <a
+                    className="mt-2 block break-words leading-7 transition hover:text-[#9bc8bf]"
+                    href="mailto:info@oxforddentalcentre.co.uk"
+                  >
+                    info@oxforddentalcentre.co.uk
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="map-pattern grid min-h-[300px] place-items-center p-8 text-center">
+              <div className="rounded-full bg-[#f7f7f2] p-5 shadow-lg">
+                <Icon name="pin" size={30} />
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
-
-      <div className="py-12 bg-white border-t border-[#14383d]/10">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8 text-center">
-          <p className="eyebrow mb-6">Proudly associated with</p>
-          <div className="flex flex-wrap items-center justify-center gap-12">
-            <img alt="Invisalign provider logo" className="h-10 w-auto object-contain" src={invisalignLogo} />
-            <img alt="AAID logo" className="h-10 w-auto object-contain" src={aaidLogo} />
-            <img alt="Smilelign logo" className="h-10 w-auto object-contain" src={smilelignLogo} />
-          </div>
-        </div>
-      </div>
     </>
+  );
+}
+
+function Field({
+  label,
+  ...props
+}: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) {
+  return (
+    <label>
+      <span className="field-label">{label}</span>
+      <input className="field-input" {...props} />
+    </label>
+  );
+}
+
+function ContactLine({
+  icon,
+  label,
+  value,
+}: {
+  icon: "phone" | "pin" | "clock";
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex gap-4 border-b border-white/15 pb-7">
+      <Icon className="mt-1 text-[#9bc8bf]" name={icon} />
+      <div>
+        <p className="text-xs tracking-[.14em] text-white/50 uppercase">{label}</p>
+        <p className="mt-2 leading-7">{value}</p>
+      </div>
+    </div>
   );
 }
 
 function CTA({ navigate }: { navigate: (page: Page) => void }) {
   return (
-    <section className="bg-[#14383d] py-24 text-white lg:py-32">
-      <div className="mx-auto max-w-5xl px-5 text-center lg:px-8">
-        <p className="eyebrow text-[#9bc8bf]">Ready to begin?</p>
-        <h2 className="mt-5 font-serif text-4xl md:text-6xl">Experience a calmer kind of dentistry.</h2>
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <button className="button-light" onClick={() => navigate("contact")}>
-            Book appointment <Icon name="arrow" size={18} />
-          </button>
+    <section className="bg-[#e4b982] py-20">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-8 px-5 lg:px-8">
+        <div>
+          <p className="eyebrow">Ready when you are</p>
+          <h2 className="mt-4 max-w-2xl font-serif text-4xl md:text-5xl">
+            Let’s take care of your smile.
+          </h2>
         </div>
+        <button className="button-primary" onClick={() => navigate("contact")}>
+          Book an appointment <Icon name="arrow" size={18} />
+        </button>
       </div>
     </section>
   );
@@ -1389,53 +1185,103 @@ function CTA({ navigate }: { navigate: (page: Page) => void }) {
 
 function Footer({ navigate }: { navigate: (page: Page) => void }) {
   return (
-    <footer className="border-t border-[#14383d]/10 bg-[#0e2a2e] py-16 text-white/90">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-3">
-          <div>
-            <p className="text-xs uppercase tracking-[.18em] text-[#9bc8bf] font-semibold mb-4">Explore</p>
-            <ul className="space-y-2.5 text-sm">
-              {navItems.map((item) => (
-                <li key={item.page}>
-                  <button className="transition hover:text-white text-white/75" onClick={() => navigate(item.page)}>
-                    {item.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="text-xs uppercase tracking-[.18em] text-[#9bc8bf] font-semibold mb-4">Working Hours</p>
-            <ul className="space-y-2 text-sm text-white/75">
-              <li className="flex justify-between max-w-xs"><span>Mon</span> <span>09:00–17:00</span></li>
-              <li className="flex justify-between max-w-xs"><span>Tue</span> <span>09:00–17:00</span></li>
-              <li className="flex justify-between max-w-xs"><span>Wed</span> <span>09:00–17:00</span></li>
-              <li className="flex justify-between max-w-xs"><span>Thu</span> <span>09:00–17:00</span></li>
-              <li className="flex justify-between max-w-xs"><span>Fri</span> <span>09:00–17:00</span></li>
-              <li className="flex justify-between max-w-xs"><span>Sat</span> <span>Closed</span></li>
-              <li className="flex justify-between max-w-xs"><span>Sun</span> <span>Closed</span></li>
-            </ul>
-          </div>
-          <div>
-            <p className="text-xs uppercase tracking-[.18em] text-[#9bc8bf] font-semibold mb-4">Contact</p>
-            <p className="text-sm text-white/75 leading-6">
-              162 Banbury Road<br />Oxford OX2 7BT
-            </p>
-            <p className="mt-3 text-sm font-semibold text-white">
-              <a href="tel:+441865493372">+44 1865 493372</a>
-            </p>
-            <p className="mt-2 text-sm text-white/75">
-              <a href="mailto:info@oxforddentalcentre.co.uk">info@oxforddentalcentre.co.uk</a>
-            </p>
-            <p className="mt-2 text-sm text-white/75">
-              Emergency: <a href="tel:+447985716665">+44 7985 716665</a>
-            </p>
+    <footer>
+      <section className="bg-white px-5 py-14 text-[#14383d] sm:py-16">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-center font-serif text-2xl sm:text-3xl">Proudly associated with</p>
+          <div className="mt-10 grid items-center justify-items-center gap-9 sm:grid-cols-3 sm:gap-12">
+            <img
+              alt="Invisalign Provider"
+              className="h-auto w-[245px] max-w-full"
+              src={invisalignLogo}
+            />
+            <img
+              alt="American Academy of Implant Dentistry"
+              className="h-auto w-[135px] max-w-full"
+              src={aaidLogo}
+            />
+            <img alt="Smilelign" className="h-auto w-[185px] max-w-full" src={smilelignLogo} />
           </div>
         </div>
-        <div className="mt-14 border-t border-white/10 pt-8 flex flex-wrap items-center justify-between gap-4 text-xs text-white/50">
-          <p>© 2025 Oxford Dental Centre · Website Concept</p>
+      </section>
+      <div className="bg-[#0c292e] text-white">
+        <div className="mx-auto grid max-w-5xl gap-12 px-5 py-16 md:grid-cols-3 lg:px-8">
+          <div>
+            <p className="footer-heading">Explore</p>
+            <div className="mt-5 grid gap-3 text-sm text-white/65">
+              {navItems.slice(1).map((item) => (
+                <button
+                  className="w-fit transition hover:text-white"
+                  key={item.page}
+                  onClick={() => navigate(item.page)}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="footer-heading">Working hours</p>
+            <div className="mt-5 space-y-3 text-sm text-white/65">
+              <p className="flex justify-between">
+                <span>Mon</span>
+                <span>09:00–17:00</span>
+              </p>
+              <p className="flex justify-between">
+                <span>Tue</span>
+                <span>09:00–17:00</span>
+              </p>
+              <p className="flex justify-between">
+                <span>Wed</span>
+                <span>09:00–17:00</span>
+              </p>
+              <p className="flex justify-between">
+                <span>Thu</span>
+                <span>09:00–17:00</span>
+              </p>
+              <p className="flex justify-between">
+                <span>Fri</span>
+                <span>09:00–17:00</span>
+              </p>
+              <p className="flex justify-between">
+                <span>Sat</span>
+                <span>Closed</span>
+              </p>
+              <p className="flex justify-between">
+                <span>Sun</span>
+                <span>Closed</span>
+              </p>
+            </div>
+          </div>
+          <div>
+            <p className="footer-heading">Contact</p>
+            <div className="mt-5 space-y-3 text-sm leading-6 text-white/65">
+              <p>
+                162 Banbury Road
+                <br />
+                Oxford OX2 7BT
+              </p>
+              <a className="block transition hover:text-white" href="tel:+441865493372">
+                +44 1865 493372
+              </a>
+              <a
+                className="block transition hover:text-white"
+                href="mailto:info@oxforddentalcentre.co.uk"
+              >
+                info@oxforddentalcentre.co.uk
+              </a>
+              <a className="block transition hover:text-white" href="tel:+447985716665">
+                Emergency: +44 7985 716665
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-white/10 px-5 py-6 text-center text-[11px] tracking-[.1em] text-white/40 uppercase">
+          © 2025 Oxford Dental Centre · Website concept
         </div>
       </div>
     </footer>
   );
 }
+
+export default App;
