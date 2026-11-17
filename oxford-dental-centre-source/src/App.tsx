@@ -1004,12 +1004,14 @@ function ContactPage({
     const data = new FormData(event.currentTarget);
     const newAppointment: AdminAppointment = {
       id: `REQ-${Date.now().toString().slice(-6)}`,
-      patientName: String(data.get("name") ?? ""),
+      name: String(data.get("name") ?? ""),
       email: String(data.get("email") ?? ""),
       phone: String(data.get("phone") ?? ""),
       treatment: String(data.get("treatment") ?? ""),
       date: String(data.get("date") ?? ""),
+      time: String(data.get("time") ?? ""),
       status: "pending",
+      approved: false,
     };
 
     setAppointments((items) => [newAppointment, ...items]);
